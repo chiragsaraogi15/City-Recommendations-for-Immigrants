@@ -86,7 +86,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 stop_words = set(stopwords.words('english'))
 
 # heading and description text 
-st.markdown("#USA City Recommendations for Immigrants")
+st.title("USA City Recommendations for Immigrants")
 st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
 
 # Step 1: Take input for user's profession name
@@ -117,7 +117,7 @@ summer_temp_mapping = {
 st.subheader("How do you prefer your winters?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
-selected_winter_temp = st.selectbox("Select your preference:", winter_temp_choices)
+selected_winter_temp = st.selectbox("", winter_temp_choices)
 
 # Get the actual coldest temperature based on the user's choice
 if selected_winter_temp != "Select an option":
@@ -130,7 +130,7 @@ else:
 st.subheader("How do you prefer your summers?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
-selected_summer_temp = st.selectbox("Select your preference:", summer_temp_choices)
+selected_summer_temp = st.selectbox("", summer_temp_choices)
 
 # Get the actual hottest temperature based on the user's choice
 if selected_summer_temp != "Select an option":
@@ -149,7 +149,7 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 # User Input: Country Selection
 st.subheader("Choose your country of origin")
 countries_choices = ["Select an option"] + countries
-index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
 
 
@@ -168,8 +168,6 @@ if st.button("Submit"):
    }
    
    recommendations_df = recommendations_df.rename(columns=column_mapping)
-
-   st.write("Recommendations DataFrame Size:", recommendations_df.shape)
    
    st.subheader("Top 5 Recommendations:")
    st.dataframe(recommendations_df.head(5))    
