@@ -15,6 +15,9 @@ nltk.download('averaged_perceptron_tagger')
 # Your remaining code for the recommendations model
 stop_words = set(stopwords.words('english'))
 
+st.markdown("# Welcome to My Recommendations App")
+st.markdown("**Hello there!** This is *my Streamlit app*.")
+
 def get_pos_tag(token):
     pos_tag = nltk.pos_tag([token])[0][1]
     return pos_tag
