@@ -117,17 +117,27 @@ summer_temp_mapping = {
 st.subheader("How do you prefer your winters to be?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
-coldest_temp = st.selectbox("Select your preference:", winter_temp_choices)
+selected_winter_temp = st.selectbox("Select your preference:", winter_temp_choices)
+
+# Get the actual coldest temperature based on the user's choice
+if selected_winter_temp != "Select an option":
+    coldest_temp = winter_temp_mapping[selected_winter_temp]
+else:
+    coldest_temp = None
+    
 
 # Step 3: Take input for hottest temperature comfortable with
 st.subheader("How do you prefer your summers to be?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
-hottest_temp = st.selectbox("Select your preference:", summer_temp_choices)
+selected_summer_temp = st.selectbox("Select your preference:", summer_temp_choices)
 
-if coldest_temp != "Select an option" and hottest_temp != "Select an option":
-    coldest_temp = float(coldest_temp.split()[0])
-    hottest_temp = float(hottest_temp.split()[0])
+# Get the actual hottest temperature based on the user's choice
+if selected_summer_temp != "Select an option":
+    hottest_temp = summer_temp_mapping[selected_summer_temp]
+else:
+    hottest_temp = None
+ 
  
 # Step 4: Take input for the country from the user
 countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'Cuba', 'Vietnam', 'El Salvador',
