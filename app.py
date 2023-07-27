@@ -116,13 +116,13 @@ summer_temp_mapping = {
 st.subheader("How do you prefer your winters to be?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
-coldest_temp = st.selectbox("Select your preference:", winter_temp_choices)
+coldest_temp = st.selectbox(winter_temp_choices)
 
 # Step 3: Take input for hottest temperature comfortable with
 st.subheader("How do you prefer your summers to be?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
-hottest_temp = st.selectbox("Select your preference:", summer_temp_choices)
+hottest_temp = st.selectbox(summer_temp_choices)
 
 if coldest_temp != "Select an option" and hottest_temp != "Select an option":
     coldest_temp = float(coldest_temp.split()[0])
@@ -136,7 +136,7 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
 countries_choices = ["Select an option"] + countries
-index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+index_choice = st.selectbox(range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
 
 
