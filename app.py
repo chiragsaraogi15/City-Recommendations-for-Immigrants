@@ -55,7 +55,10 @@ st.subheader("How do you prefer your summers to be?")
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
 hottest_temp = st.selectbox("Select your preference:", summer_temp_choices)
 
+coldest_temp = float(coldest_temp.split()[0])
+hottest_temp = float(hottest_temp.split()[0])
 
+ 
 # Step 4: Take input for the country from the user
 countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'Cuba', 'Vietnam', 'El Salvador',
              'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
@@ -71,6 +74,7 @@ if index_choice > 0:
     choice = countries[index_choice - 1]
 else:
     choice = None
+
 
 
 def get_pos_tag(token):
