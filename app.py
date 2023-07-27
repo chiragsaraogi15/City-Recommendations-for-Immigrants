@@ -19,11 +19,8 @@ stop_words = set(stopwords.words('english'))
 st.markdown("# Welcome to My Immigrant USA City Recommendations Website")
 st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
 
-
 # Step 1: Take input for user's profession name
-with st.form("ProfessionForm"):
-    user_profession = st.text_input("Enter your profession name:")
-    submit_button = st.form_submit_button("Submit")
+user_profession = st.text_input("Enter your profession name:")
 
 # Step 2: taking weather input preferences
 coldest_temp = None
@@ -67,7 +64,7 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
 countries_choices = ["Select an option"] + countries
-choice = st.selectbox("Select your country:", countries_choices)
+choice = st.selectbox("Select your country:", range(len(countries_choices)))
 
 
 def get_pos_tag(token):
