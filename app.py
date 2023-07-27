@@ -92,7 +92,6 @@ st.markdown("United States of America, a dream country for many immigrants comin
 # Step 1: Take input for user's profession name
 user_profession = st.text_input("Enter your profession name:")
 
-print("User Profession:", user_profession)
 
 # Step 2: taking weather input preferences
 coldest_temp = None
@@ -135,8 +134,7 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
              'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
              'Ethiopia', 'Canada', 'Iran', 'Guatemala', 'United Kingdom', 'Nepal', 'Other Countries']
 
-print("Coldest Temp:", coldest_temp)
-print("Hottest Temp:", hottest_temp)
+
 
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
@@ -144,10 +142,13 @@ countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
 
-print("Selected Country:", choice)
 
 if st.button("Submit"):
+   print("User Profession:", user_profession) 
+   print("Coldest Temp:", coldest_temp)
+   print("Hottest Temp:", hottest_temp) 
    print("Submit Button Clicked")
+   print("Selected Country:", choice)
    
    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
    print("Recommendations DataFrame Size:", recommendations_df.shape)
