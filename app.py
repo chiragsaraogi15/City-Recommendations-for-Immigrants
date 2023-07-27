@@ -88,6 +88,11 @@ stop_words = set(stopwords.words('english'))
 # heading and description text 
 st.title("USA City Recommendations for Immigrants")
 st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
+st.markdown("Some of us move here to be with our families, and some of us move here to make a better life and find our dream jobs")
+st.markdown("USA is big country comprising of 50 states and 1000's of large cities, and deciding where to live can be extremely challenging")
+st.markdown("As immigrants, factors like job availabilities, community, weather, and safety are a few factors that are important when making a decision on where to live")
+st.markdown("This recommendation website is designed to provide you with top recommendations for cities to live in based on your preferences")
+st.markdown("Let's begin by answering 4 simple questions about you")
 
 # Step 1: Take input for user's profession name
 user_profession = st.text_input("Enter your profession name:")
