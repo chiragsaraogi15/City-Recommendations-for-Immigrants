@@ -142,7 +142,7 @@ choice = countries[index_choice - 1]
 
 
 if st.button("Submit"):
-   recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice
+   recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
    st.subheader("Top 5 Recommendations:")
    st.dataframe(recommendations_df.head(5))    
     
