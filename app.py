@@ -21,7 +21,9 @@ st.markdown("United States of America, a dream country for many immigrants comin
 
 
 # Step 1: Take input for user's profession name
-user_profession = st.text_input("Enter your profession name:")
+with st.form("ProfessionForm"):
+    user_profession = st.text_input("Enter your profession name:")
+    submit_button = st.form_submit_button("Submit")
 
 # Step 2: taking weather input preferences
 coldest_temp = None
@@ -43,29 +45,29 @@ summer_temp_mapping = {
     "5. Extreme hot (above 90°F)": 100
 }
 
-# User Input: Coldest Temperature Comfortable With
+# Step 2: Take input for coldest temperature comfortable with
 st.subheader("How do you prefer your winters to be?")
-coldest_temp = st.selectbox("Select your preference:", list(winter_temp_mapping.keys()))
+# Add a blank default choice as the first item in the list
+winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
+coldest_temp = st.selectbox("Select your preference:", winter_temp_choices)
 
-# User Input: Hottest Temperature Comfortable With
+
+# Step 3: Take input for hottest temperature comfortable with
 st.subheader("How do you prefer your summers to be?")
-hottest_temp = st.selectbox("Select your preference:", list(summer_temp_mapping.keys()))
+# Add a blank default choice as the first item in the list
+summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
+hottest_temp = st.selectbox("Select your preference:", summer_temp_choices)
 
-# Step 3: Take input for the country from the user
+
+# Step 4: Take input for the country from the user
 countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'Cuba', 'Vietnam', 'El Salvador',
              'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
              'Ethiopia', 'Canada', 'Iran', 'Guatemala', 'United Kingdom', 'Nepal', 'Other Countries']
 
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
-choice = st.selectbox("Select your country:", countries)
-
-# Display the inputs
-st.subheader("Your inputs:")
-st.write("Profession Name:", user_profession)
-st.write("You are comfortable with a coldest temperature of", winter_temp_mapping[coldest_temp], "Fahrenheit.")
-st.write("You are comfortable with a hottest temperature of", summer_temp_mapping[hottest_temp], "Fahrenheit.")
-st.write("Which country are you from:", choice)
+countries_choices = ["Select an option"] + countries
+choice = st.selectbox("Select your country:", countries_choices)
 
 
 def get_pos_tag(token):
