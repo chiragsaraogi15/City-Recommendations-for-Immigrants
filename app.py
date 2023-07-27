@@ -86,7 +86,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 stop_words = set(stopwords.words('english'))
 
 # heading and description text 
-st.markdown("# Welcome to My Immigrant USA City Recommendations Website")
+st.markdown("#USA City Recommendations for Immigrants")
 st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
 
 # Step 1: Take input for user's profession name
@@ -114,7 +114,7 @@ summer_temp_mapping = {
 }
 
 # Step 2: Take input for coldest temperature comfortable with
-st.subheader("How do you prefer your winters to be?")
+st.subheader("How do you prefer your winters?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
 selected_winter_temp = st.selectbox("Select your preference:", winter_temp_choices)
@@ -127,7 +127,7 @@ else:
     
 
 # Step 3: Take input for hottest temperature comfortable with
-st.subheader("How do you prefer your summers to be?")
+st.subheader("How do you prefer your summers?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
 selected_summer_temp = st.selectbox("Select your preference:", summer_temp_choices)
@@ -147,20 +147,28 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 
 
 # User Input: Country Selection
-st.subheader("Choose your country from the list:")
+st.subheader("Choose your country of origin")
 countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
 
 
 if st.button("Submit"):
-   st.write("User Profession:", user_profession) 
-   st.write("Coldest Temp:", coldest_temp)
-   st.write("Hottest Temp:", hottest_temp) 
-   st.write("Submit Button Clicked")
-   st.write("Selected Country:", choice)
    
    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
+   
+   column_mapping = {
+       'CITY': 'CITY',
+       'PROFESSION': 'PROFESSION',
+       'TOT_EMP': 'EMPLOYMENT COUNT',
+       'A_MEAN': 'AVERAGE ANNUAL SALARY',
+       choice: f'{choice.upper()} IMMIGRANT COUNT',
+       'WINTER_COLDEST_TEMP': 'WINTER COLDEST TEMPERATURE',
+       'SUMMER_HOTTEST_TEMP': 'SUMMER HOTTEST TEMPERATURE'
+   }
+   
+   recommendations_df = recommendations_df.rename(columns=column_mapping)
+
    st.write("Recommendations DataFrame Size:", recommendations_df.shape)
    
    st.subheader("Top 5 Recommendations:")
