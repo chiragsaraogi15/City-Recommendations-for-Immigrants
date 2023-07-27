@@ -64,7 +64,13 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
 countries_choices = ["Select an option"] + countries
-choice = st.selectbox("Select your country:", range(len(countries_choices)))
+index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+
+# Validate the selected index choice and obtain the country name
+if index_choice > 0:
+    choice = countries[index_choice - 1]
+else:
+    choice = None
 
 
 def get_pos_tag(token):
