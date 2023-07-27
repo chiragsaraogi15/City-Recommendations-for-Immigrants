@@ -144,14 +144,14 @@ choice = countries[index_choice - 1]
 
 
 if st.button("Submit"):
-   print("User Profession:", user_profession) 
-   print("Coldest Temp:", coldest_temp)
-   print("Hottest Temp:", hottest_temp) 
-   print("Submit Button Clicked")
-   print("Selected Country:", choice)
+   st.write("User Profession:", user_profession) 
+   st.write("Coldest Temp:", coldest_temp)
+   st.write("Hottest Temp:", hottest_temp) 
+   st.write("Submit Button Clicked")
+   st.write("Selected Country:", choice)
    
    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
-   print("Recommendations DataFrame Size:", recommendations_df.shape)
+   st.write("Recommendations DataFrame Size:", recommendations_df.shape)
    
    st.subheader("Top 5 Recommendations:")
    st.dataframe(recommendations_df.head(5))    
