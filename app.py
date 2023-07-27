@@ -12,14 +12,6 @@ nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
-# Your remaining code for the recommendations model
-stop_words = set(stopwords.words('english'))
-
-# heading and description text 
-st.markdown("# Welcome to My Immigrant USA City Recommendations Website")
-st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
-
-
 def get_pos_tag(token):
     pos_tag = nltk.pos_tag([token])[0][1]
     return pos_tag
@@ -90,6 +82,13 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
     return filtered_df
 
 
+# Your remaining code for the recommendations model
+stop_words = set(stopwords.words('english'))
+
+# heading and description text 
+st.markdown("# Welcome to My Immigrant USA City Recommendations Website")
+st.markdown("United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from.")
+
 # Step 1: Take input for user's profession name
 user_profession = st.text_input("Enter your profession name:")
 
@@ -139,15 +138,11 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 st.subheader("Choose your country from the list:")
 countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+choice = countries[index_choice - 1]
 
-# Validate the selected index choice and obtain the country name
-if index_choice > 0:
-    choice = countries[index_choice - 1]
-else:
-    choice = None
 
 if st.button("Submit"):
-    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice
-    st.subheader("Top 5 Recommendations:")
-    st.dataframe(recommendations_df.head(5))    
+   recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice
+   st.subheader("Top 5 Recommendations:")
+   st.dataframe(recommendations_df.head(5))    
     
