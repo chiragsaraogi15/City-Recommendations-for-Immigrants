@@ -47,7 +47,8 @@ def jaccard_similarity(set1, set2):
     
 df = pd.read_pickle('tagged_data.pkl')
 
-user_profession = input("Enter your profession name: ")
+# Step 1: Take input for user's profession name
+user_profession = st.text_input("Enter your profession name:")
 
 coldest_temp = None
 hottest_temp = None
@@ -67,6 +68,8 @@ summer_temp_mapping = {
     "4. Very hot (80 - 90°F)": 90,
     "5. Extreme hot (above 90°F)": 100
 }
+
+'''
 
 # Step 2: Take input for coldest temperature comfortable with
 while True:
@@ -98,11 +101,13 @@ while True:
         else:
             print("Invalid input. Please select a valid option.")
 
+'''
 # Step 4: Take input for the country from the user
 countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'Cuba', 'Vietnam', 'El Salvador',
              'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
              'Ethiopia', 'Canada', 'Iran', 'Guatemala', 'United Kingdom', 'Nepal', 'Other Countries']
 
+'''
 while True:
     print("Choose your country from the list:")
     for i, country in enumerate(countries, start=1):
@@ -123,6 +128,27 @@ print("Profession Name:", user_profession)
 print("You are comfortable with a coldest temperature of", coldest_temp, "Fahrenheit.")
 print("You are comfortable with a hottest temperature of", hottest_temp, "Fahrenheit.")
 print("Which country are you from:", country)
+'''
+
+# User Input: Coldest Temperature Comfortable With
+st.subheader("How do you prefer your winters to be?")
+coldest_temp = st.selectbox("Select your preference:", list(winter_temp_mapping.keys()))
+
+# User Input: Hottest Temperature Comfortable With
+st.subheader("How do you prefer your summers to be?")
+hottest_temp = st.selectbox("Select your preference:", list(summer_temp_mapping.keys()))
+
+# User Input: Country Selection
+st.subheader("Choose your country from the list:")
+choice = st.selectbox("Select your country:", countries)
+
+# Display the inputs
+st.subheader("Your inputs:")
+st.write("Profession Name:", user_profession)
+st.write("You are comfortable with a coldest temperature of", winter_temp_mapping[coldest_temp], "Fahrenheit.")
+st.write("You are comfortable with a hottest temperature of", summer_temp_mapping[hottest_temp], "Fahrenheit.")
+st.write("Which country are you from:", choice)
+
 
 selected_columns = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
                     'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',country]
