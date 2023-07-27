@@ -92,6 +92,8 @@ st.markdown("United States of America, a dream country for many immigrants comin
 # Step 1: Take input for user's profession name
 user_profession = st.text_input("Enter your profession name:")
 
+print("User Profession:", user_profession)
+
 # Step 2: taking weather input preferences
 coldest_temp = None
 hottest_temp = None
@@ -116,13 +118,13 @@ summer_temp_mapping = {
 st.subheader("How do you prefer your winters to be?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
-coldest_temp = st.selectbox(winter_temp_choices)
+coldest_temp = st.selectbox("Select your preference:", winter_temp_choices)
 
 # Step 3: Take input for hottest temperature comfortable with
 st.subheader("How do you prefer your summers to be?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
-hottest_temp = st.selectbox(summer_temp_choices)
+hottest_temp = st.selectbox("Select your preference:", summer_temp_choices)
 
 if coldest_temp != "Select an option" and hottest_temp != "Select an option":
     coldest_temp = float(coldest_temp.split()[0])
@@ -133,15 +135,23 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
              'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
              'Ethiopia', 'Canada', 'Iran', 'Guatemala', 'United Kingdom', 'Nepal', 'Other Countries']
 
+print("Coldest Temp:", coldest_temp)
+print("Hottest Temp:", hottest_temp)
+
 # User Input: Country Selection
 st.subheader("Choose your country from the list:")
 countries_choices = ["Select an option"] + countries
-index_choice = st.selectbox(range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+index_choice = st.selectbox("Select your country:", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
 
+print("Selected Country:", choice)
 
 if st.button("Submit"):
+   print("Submit Button Clicked")
+   
    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
+   print("Recommendations DataFrame Size:", recommendations_df.shape)
+   
    st.subheader("Top 5 Recommendations:")
    st.dataframe(recommendations_df.head(5))    
     
