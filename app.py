@@ -149,5 +149,5 @@ else:
 if st.button("Submit"):
     recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice
     st.subheader("Top 5 Recommendations:")
-    st.table(recommendations_df.head(5))    
+    st.dataframe(recommendations_df.head(5))    
     
