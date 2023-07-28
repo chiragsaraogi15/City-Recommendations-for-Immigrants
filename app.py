@@ -105,7 +105,7 @@ st.markdown("I have created a system that takes in your preferences and provides
 
 # Step 1: Take input for user's profession name
 
-st.markdown("<h3>What kind of work do you do?</h3>", unsafe_allow_html=True)
+st.markdown("<h2>What kind of work do you do?</h2>", unsafe_allow_html=True)
 user_profession = st.text_input("")
 
 
@@ -133,7 +133,7 @@ summer_temp_mapping = {
 }
 
 # Step 2: Take input for coldest temperature comfortable with
-st.subheader("How do you like your winters?")
+st.markdown("<h2>How do you like your winters?</h2>")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
 selected_winter_temp = st.selectbox("", winter_temp_choices)
@@ -146,7 +146,7 @@ else:
     
 
 # Step 3: Take input for hottest temperature comfortable with
-st.subheader("How do you like your summers?")
+st.markdown("<h2>How do you like your summers?</h2>")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
 selected_summer_temp = st.selectbox("", summer_temp_choices)
@@ -166,7 +166,7 @@ countries = ['Bangladesh', 'Brazil', 'Canada', 'China', 'Colombia', 'Cuba', 'Dom
 
 
 # User Input: Country Selection
-st.subheader("Which country are you originally from?")
+st.markdown("<h2>Which country are you originally from?</h2>")
 countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
