@@ -86,20 +86,22 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 stop_words = set(stopwords.words('english'))
 
 # heading and description text 
-st.title("USA City Recommendations")
+st.title("USA City Recommendation System")
 
 long_paragraph = (
         "United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from. "
-        "Some of us move here to be with our families, and some of us move here to make a better life and find our dream jobs. "
-        "USA is big country comprising of 50 states and 1000's of large cities, and deciding where to live can be extremely challenging. "
-        "As immigrants, factors like job availabilities, community, weather, and safety are a few factors that are important when making a decision on where to live. \\n"
-        "I have created a recommendation system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you"
+        "Some immigrants move here to be with their families, and some move here to make a better life and find their dream job. "
+        "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
+        "As immigrants, factors like job availabilities, community, weather, education quality, affordability and safety are a few factors that are important when making a decision on where to live. \\n"
+        
 )
 st.write(long_paragraph)
 
 
+st.markdown("I have created a recommendation system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you")
+
 # Step 1: Take input for user's profession name
-user_profession = st.text_input("Enter your profession name:")
+user_profession = st.text_input("What kind of work do you do?", "e.g., Software Engineer, Teacher, etc.")
 
 
 # Step 2: taking weather input preferences
@@ -123,7 +125,7 @@ summer_temp_mapping = {
 }
 
 # Step 2: Take input for coldest temperature comfortable with
-st.subheader("How do you prefer your winters?")
+st.subheader("How do you like your winters?")
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
 selected_winter_temp = st.selectbox("", winter_temp_choices)
@@ -136,7 +138,7 @@ else:
     
 
 # Step 3: Take input for hottest temperature comfortable with
-st.subheader("How do you prefer your summers?")
+st.subheader("How do you like your summers?")
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
 selected_summer_temp = st.selectbox("", summer_temp_choices)
@@ -156,7 +158,7 @@ countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'C
 
 
 # User Input: Country Selection
-st.subheader("Choose your country of origin")
+st.subheader("Which country are you originally from?")
 countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
@@ -172,8 +174,8 @@ if st.button("Submit"):
        'TOT_EMP': 'EMPLOYMENT COUNT',
        'A_MEAN': 'AVERAGE ANNUAL SALARY',
        choice: f'{choice.upper()} IMMIGRANT COUNT',
-       'WINTER_COLDEST_TEMP': 'WINTER COLDEST TEMPERATURE',
-       'SUMMER_HOTTEST_TEMP': 'SUMMER HOTTEST TEMPERATURE'
+       'WINTER_COLDEST_TEMP': 'COLDEST TEMPERATURE IN WINTERS',
+       'SUMMER_HOTTEST_TEMP': 'HOTTEST TEMPERATURE IN SUMMERS'
    }
    
    recommendations_df = recommendations_df.rename(columns=column_mapping)
