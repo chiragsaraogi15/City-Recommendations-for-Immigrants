@@ -106,7 +106,7 @@ st.markdown("I have created a system that takes in your preferences and provides
 # Step 1: Take input for user's profession name
 
 st.markdown("<h3>What kind of work do you do?</h3>", unsafe_allow_html=True)
-user_profession = st.text_input(" ", "", "e.g., Software Engineer, Teacher, etc.")
+user_profession = st.text_input(" ", value =  "e.g., Software Engineer, Teacher, etc.")
 
 
 #user_profession = st.text_input("What kind of work do you do?", "e.g., Software Engineer, Teacher, etc.")
