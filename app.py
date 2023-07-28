@@ -96,15 +96,16 @@ st.write(long_paragraph)
 
 long_paragraph2 = (
         "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
-        "As immigrants, factors like **job availability**, **community**, **weather**, **education quality**, **affordability** and **safety** are a few factors that are important when making a decision on where to live. \n"
+        "As immigrants, factors like **job availability**, **community**, **weather**, **education**, **affordability** and **safety** are a few factors that are important when making a decision on where to live. \n"
 )
 
 st.write(long_paragraph2)
 
-st.markdown("I have created a recommendation system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you")
+st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. \n")
+st.markdown("Let's begin by answering 4 simple questions about you")
 
 # Step 1: Take input for user's profession name
-user_profession = st.text_input("What kind of work do you do?", "e.g., Software Engineer, Teacher, etc.")
+user_profession = st.subheader("What kind of work do you do?", "e.g., Software Engineer, Teacher, etc.")
 
 
 # Step 2: taking weather input preferences
@@ -154,9 +155,9 @@ else:
  
  
 # Step 4: Take input for the country from the user
-countries = ['Mexico', 'China', 'India', 'Philippines', 'Dominican Republic', 'Cuba', 'Vietnam', 'El Salvador',
-             'Korea', 'Jamaica', 'Brazil', 'Haiti', 'Colombia', 'Pakistan', 'Iraq', 'Bangladesh', 'Nigeria',
-             'Ethiopia', 'Canada', 'Iran', 'Guatemala', 'United Kingdom', 'Nepal', 'Other Countries']
+countries = ['Bangladesh', 'Brazil', 'Canada', 'China', 'Colombia', 'Cuba', 'Dominican Republic', 'El Salvador',
+             'Ethiopia', 'Guatemala', 'Haiti', 'India', 'Iran', 'Iraq', 'Jamaica', 'Korea', 'Mexico', 'Nepal',
+             'Nigeria', 'Pakistan', 'Philippines', 'United Kingdom', 'Vietnam', 'Other Countries']
 
 
 
