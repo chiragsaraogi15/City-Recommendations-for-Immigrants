@@ -92,7 +92,7 @@ long_paragraph = (
         "United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from. "
         "Some immigrants move here to be with their families, and some move here to make a better life and find their dream job. "
         "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
-        "As immigrants, factors like job availabilities, community, weather, education quality, affordability and safety are a few factors that are important when making a decision on where to live. \\n"
+        "As immigrants, factors like job availabilities, community, weather, education quality, affordability and safety are a few factors that are important when making a decision on where to live. \n"
         
 )
 st.write(long_paragraph)
