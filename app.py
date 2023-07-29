@@ -204,9 +204,11 @@ if st.button("Submit"):
 
     # Display each row as a card with city number
     for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
-        employment_count = f'{row["Employment Count"]:,}'  # Add commas to the number
-        average_salary = f'${row["Average Annual Salary"]:,}'  # Add $ and commas
-        immigrant_count = f'{row["Immigrant Count"]:,}'  # Add commas to the number
+        employment_count = f'{row["Employment Count"]:,}'
+        average_salary = f'${row["Average Annual Salary"]:.0f}'  # Remove decimal places
+        immigrant_count = f'{row["Immigrant Count"]:,}'
+        coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+        hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
 
         city_card_html = (
             f'<div class="card"><h2>{idx}. {index}</h2>'
@@ -214,11 +216,15 @@ if st.button("Submit"):
             f'<p><strong>Employment Count:</strong> {employment_count}</p>'
             f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
             f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
-            f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}°F</p>'
-            f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}°F</p></div>'
+            f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+            f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p></div>'
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
+
+
+
+
 
 
 
