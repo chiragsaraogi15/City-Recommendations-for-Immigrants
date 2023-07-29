@@ -176,7 +176,7 @@ if st.button("Submit"):
        'CITY': 'City',
        'PROFESSION': 'Profession',
        'TOT_EMP': 'Employment Count',
-       'A_MEAN': 'Avverage Annual Salary',
+       'A_MEAN': 'Average Annual Salary',
        choice: 'Immigrant Count',
        'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
        'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers'
