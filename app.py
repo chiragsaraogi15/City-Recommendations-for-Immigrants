@@ -170,10 +170,9 @@ choice = countries[index_choice - 1]
 
 
 if st.button("Submit"):
+    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
    
-   recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
-   
-   column_mapping = {
+    column_mapping = {
        'CITY': 'CITY',
        'PROFESSION': 'PROFESSION',
        'TOT_EMP': 'EMPLOYMENT COUNT',
@@ -181,31 +180,31 @@ if st.button("Submit"):
        choice: f'{choice.upper()} IMMIGRANT COUNT',
        'WINTER_COLDEST_TEMP': 'COLDEST TEMPERATURE IN WINTERS',
        'SUMMER_HOTTEST_TEMP': 'HOTTEST TEMPERATURE IN SUMMERS'
-   }
+    }
    
-   recommendations_df = recommendations_df.rename(columns=column_mapping)
+    recommendations_df = recommendations_df.rename(columns=column_mapping)
    
-   st.subheader("Top 5 Recommendations:")
+    st.subheader("Top 5 Recommendations:")
    
-   # Create a CSS style for the cards
-   st.write(
-        """
-        <style>
-        .card {
-            padding: 1rem;
-            margin: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-        }
-        </style>
-        """
-        )
+    # Create a CSS style for the cards
+    card_style = """
+    <style>
+    .card {
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+    </style>
+    """
+
+    st.write(card_style, unsafe_allow_html=True)
 
     # Display each row as a card
-   for index, row in recommendations_df.head(5).iterrows():
-    st.write(
-            f'<div class="card"><h2>{row["CITY"]}</h2>'
+    for index, row in recommendations_df.head(5).iterrows():
+        st.write(
+            f'<div class="card"><h2>{index}</h2>'
             f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
             f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
             f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
@@ -213,4 +212,7 @@ if st.button("Submit"):
             f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
             f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
             unsafe_allow_html=True,
-    )
+        )
+
+
+
