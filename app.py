@@ -177,7 +177,7 @@ if st.button("Submit"):
        'PROFESSION': 'PROFESSION',
        'TOT_EMP': 'EMPLOYMENT COUNT',
        'A_MEAN': 'AVERAGE ANNUAL SALARY',
-       choice: f'{choice.upper()} IMMIGRANT COUNT',
+       choice: 'IMMIGRANT COUNT',
        'WINTER_COLDEST_TEMP': 'COLDEST TEMPERATURE IN WINTERS',
        'SUMMER_HOTTEST_TEMP': 'HOTTEST TEMPERATURE IN SUMMERS'
     }
@@ -208,7 +208,7 @@ if st.button("Submit"):
             f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
             f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
             f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
-            f'<p><strong>{choice.upper()}:</strong> {row[choice]}</p>'
+            f'<p><strong>IMMIGRANT COUNT:</strong> {row["IMMIGRANT COUNT"]}</p>'
             f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
             f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
             unsafe_allow_html=True,
