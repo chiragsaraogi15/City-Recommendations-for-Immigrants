@@ -188,7 +188,7 @@ if st.button("Submit"):
    st.subheader("Top 5 Recommendations:")
    
    # Create a CSS style for the cards
-    st.write(
+   st.write(
         """
         <style>
         .card {
@@ -200,11 +200,11 @@ if st.button("Submit"):
         }
         </style>
         """
-    )
+        )
 
     # Display each row as a card
-    for index, row in recommendations_df.head(5).iterrows():
-        st.write(
+   for index, row in recommendations_df.head(5).iterrows():
+    st.write(
             f'<div class="card"><h2>{row["CITY"]}</h2>'
             f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
             f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
@@ -213,4 +213,4 @@ if st.button("Submit"):
             f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
             f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
             unsafe_allow_html=True,
-        )
+    )
