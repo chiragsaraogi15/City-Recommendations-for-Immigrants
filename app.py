@@ -173,13 +173,13 @@ if st.button("Submit"):
     recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
    
     column_mapping = {
-       'CITY': 'CITY',
-       'PROFESSION': 'PROFESSION',
-       'TOT_EMP': 'EMPLOYMENT COUNT',
-       'A_MEAN': 'AVERAGE ANNUAL SALARY',
-       choice: 'IMMIGRANT COUNT',
-       'WINTER_COLDEST_TEMP': 'COLDEST TEMPERATURE IN WINTERS',
-       'SUMMER_HOTTEST_TEMP': 'HOTTEST TEMPERATURE IN SUMMERS'
+       'CITY': 'City',
+       'PROFESSION': 'Profession',
+       'TOT_EMP': 'Employment Count',
+       'A_MEAN': 'Avverage Annual Salary',
+       choice: 'Immigrant Count',
+       'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
+       'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers'
     }
     
    
@@ -196,6 +196,8 @@ if st.button("Submit"):
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         background-color: #f9f9f9;
+        height: 150px;
+        overflow-y: auto;
     }
     </style>
     """
@@ -206,11 +208,11 @@ if st.button("Submit"):
     for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
         st.write(
             f'<div class="card"><h2>{idx}. {index}</h2>'
-            f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
-            f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
-            f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
-            f'<p><strong>IMMIGRANT COUNT:</strong> {row["IMMIGRANT COUNT"]}</p>'
-            f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
-            f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
+            f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
+            f'<p><strong>Employment Count:</strong> {row["Employment Count"]}</p>'
+            f'<p><strong>Average Annual Salary:</strong> {row["Average Annual Salary"]}</p>'
+            f'<p><strong>Immigrant Count:</strong> {row["Immigrant Count"]}</p>'
+            f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}</p>'
+            f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}</p></div>',
             unsafe_allow_html=True,
         )
