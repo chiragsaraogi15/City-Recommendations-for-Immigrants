@@ -205,7 +205,7 @@ if st.button("Submit"):
     # Display each row as a card with city number
     for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
         employment_count = f'{row["Employment Count"]:,}'
-        average_salary = f'${row["Average Annual Salary"]:.0f}'  # Remove decimal places
+        average_salary = f'${row["Average Annual Salary"]:,.0f}'  # Remove decimal places
         immigrant_count = f'{row["Immigrant Count"]:,}'
         coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
         hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
