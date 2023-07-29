@@ -204,20 +204,21 @@ if st.button("Submit"):
 
     # Display each row as a card with city number
     for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
-        employment_count = f'{row["Employment Count"]:,}'
-        average_salary = f'${row["Average Annual Salary"]:,}'
-        immigrant_count = f'{row["Immigrant Count"]:,}' 
+        employment_count = f'{row["Employment Count"]:,}'  # Add commas to the number
+        average_salary = f'${row["Average Annual Salary"]:,}'  # Add $ and commas
+        immigrant_count = f'{row["Immigrant Count"]:,}'  # Add commas to the number
 
-    st.write(
+    city_card_html = (
         f'<div class="card"><h2>{idx}. {index}</h2>'
         f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
-        f'<p><strong>Employment Count:</strong> {employment_count}</p>'  # Use the formatted value
-        f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'  # Use the formatted value
-        f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'  # Use the formatted value
-        f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}°F</p>'  # Add °F symbol
-        f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}°F</p></div>',
-        unsafe_allow_html=True,
+        f'<p><strong>Employment Count:</strong> {employment_count}</p>'
+        f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
+        f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
+        f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}°F</p>'
+        f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}°F</p></div>'
     )
+
+    st.write(city_card_html, unsafe_allow_html=True)
 
 
 
