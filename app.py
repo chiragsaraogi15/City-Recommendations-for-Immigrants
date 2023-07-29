@@ -208,11 +208,12 @@ if st.button("Submit"):
             f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
             f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
             f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
-            f'<p><strong>{choice.upper()} IMMIGRANT COUNT:</strong> {row[choice]}</p>'
+            f'<p><strong>{choice.upper()}:</strong> {row[choice]}</p>'
             f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
             f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
             unsafe_allow_html=True,
         )
+
 
 
 
