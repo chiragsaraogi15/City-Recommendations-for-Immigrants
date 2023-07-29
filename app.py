@@ -177,12 +177,11 @@ if st.button("Submit"):
        'PROFESSION': 'PROFESSION',
        'TOT_EMP': 'EMPLOYMENT COUNT',
        'A_MEAN': 'AVERAGE ANNUAL SALARY',
-       #choice: 'IMMIGRANT COUNT',
+       choice: 'IMMIGRANT COUNT',
        'WINTER_COLDEST_TEMP': 'COLDEST TEMPERATURE IN WINTERS',
        'SUMMER_HOTTEST_TEMP': 'HOTTEST TEMPERATURE IN SUMMERS'
     }
     
-    column_mapping[choice] = f'{choice.upper()} IMMIGRANT COUNT'
    
     recommendations_df = recommendations_df.rename(columns=column_mapping)
    
@@ -203,20 +202,15 @@ if st.button("Submit"):
 
     st.write(card_style, unsafe_allow_html=True)
 
-    # Display each row as a card
-    for index, row in recommendations_df.head(5).iterrows():
+    # Display each row as a card with city number
+    for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
         st.write(
-            f'<div class="card"><h2>{index}</h2>'
+            f'<div class="card"><h2>{idx}. {index}</h2>'
             f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
             f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
             f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
-            f'<p><strong>{choice.upper()} IMMIGRANT COUNT:</strong> {row[choice]}</p>'
-            #f'<p><strong>IMMIGRANT COUNT:</strong> {row["IMMIGRANT COUNT"]}</p>'
+            f'<p><strong>IMMIGRANT COUNT:</strong> {row["IMMIGRANT COUNT"]}</p>'
             f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
             f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
             unsafe_allow_html=True,
         )
-
-
-
-
