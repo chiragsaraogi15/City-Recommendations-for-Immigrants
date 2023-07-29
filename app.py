@@ -74,8 +74,8 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
                              .groupby('CITY').head(1) \
                              .sort_index()
 
-    filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN', choice, 'SAFETY_INDEX', 'COST_OF_LIVING_INDEX'],
-                                          ascending=[False, False, False, False, True])
+    filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
+                                          ascending=[False, False, True, False, False])
 
     desired_columns = ['PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP']
     filtered_df = filtered_df[desired_columns]
@@ -186,5 +186,31 @@ if st.button("Submit"):
    recommendations_df = recommendations_df.rename(columns=column_mapping)
    
    st.subheader("Top 5 Recommendations:")
-   st.dataframe(recommendations_df.head(5))    
-    
+   
+   # Create a CSS style for the cards
+    st.write(
+        """
+        <style>
+        .card {
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        </style>
+        """
+    )
+
+    # Display each row as a card
+    for index, row in recommendations_df.head(5).iterrows():
+        st.write(
+            f'<div class="card"><h2>{row["CITY"]}</h2>'
+            f'<p><strong>PROFESSION:</strong> {row["PROFESSION"]}</p>'
+            f'<p><strong>EMPLOYMENT COUNT:</strong> {row["EMPLOYMENT COUNT"]}</p>'
+            f'<p><strong>AVERAGE ANNUAL SALARY:</strong> {row["AVERAGE ANNUAL SALARY"]}</p>'
+            f'<p><strong>{choice.upper()} IMMIGRANT COUNT:</strong> {row[choice]}</p>'
+            f'<p><strong>COLDEST TEMPERATURE IN WINTERS:</strong> {row["COLDEST TEMPERATURE IN WINTERS"]}</p>'
+            f'<p><strong>HOTTEST TEMPERATURE IN SUMMERS:</strong> {row["HOTTEST TEMPERATURE IN SUMMERS"]}</p></div>',
+            unsafe_allow_html=True,
+        )
