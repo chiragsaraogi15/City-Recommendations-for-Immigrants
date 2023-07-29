@@ -196,8 +196,6 @@ if st.button("Submit"):
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         background-color: #f9f9f9;
-        height: 150px;
-        overflow-y: auto;
     }
     </style>
     """
@@ -206,13 +204,21 @@ if st.button("Submit"):
 
     # Display each row as a card with city number
     for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
-        st.write(
-            f'<div class="card"><h2>{idx}. {index}</h2>'
-            f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
-            f'<p><strong>Employment Count:</strong> {row["Employment Count"]}</p>'
-            f'<p><strong>Average Annual Salary:</strong> {row["Average Annual Salary"]}</p>'
-            f'<p><strong>Immigrant Count:</strong> {row["Immigrant Count"]}</p>'
-            f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}</p>'
-            f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}</p></div>',
-            unsafe_allow_html=True,
-        )
+        employment_count = f'{row["Employment Count"]:,}'
+        average_salary = f'${row["Average Annual Salary"]:,}'
+        immigrant_count = f'{row["Immigrant Count"]:,}' 
+
+    st.write(
+        f'<div class="card"><h2>{idx}. {index}</h2>'
+        f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
+        f'<p><strong>Employment Count:</strong> {employment_count}</p>'  # Use the formatted value
+        f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'  # Use the formatted value
+        f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'  # Use the formatted value
+        f'<p><strong>Coldest Temperature in Winters:</strong> {row["Coldest Temperature in Winters"]}°F</p>'  # Add °F symbol
+        f'<p><strong>Hottest Temperature in Summers:</strong> {row["Hottest Temperature in Summers"]}°F</p></div>',
+        unsafe_allow_html=True,
+    )
+
+
+
+
