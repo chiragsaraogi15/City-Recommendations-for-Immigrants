@@ -104,8 +104,7 @@ st.write(long_paragraph2)
 st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you. \n")
 
 # Step 1: Take input for user's profession name
-
-st.markdown("<h3>What kind of work do you do?</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='margin: 0;'>What kind of work do you do?</h3>", unsafe_allow_html=True)
 user_profession = st.text_input("")
 
 
@@ -130,7 +129,7 @@ summer_temp_mapping = {
 }
 
 # Step 2: Take input for coldest temperature comfortable with
-st.subheader("How do you like your winters?")
+st.markdown("<h3 style='margin: 0;'>How do you like your winters?</h3>", unsafe_allow_html=True)
 # Add a blank default choice as the first item in the list
 winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
 selected_winter_temp = st.selectbox("", winter_temp_choices)
@@ -143,7 +142,7 @@ else:
     
 
 # Step 3: Take input for hottest temperature comfortable with
-st.subheader("How do you like your summers?")
+st.markdown("<h3 style='margin: 0;'>How do you like your summers?</h3>", unsafe_allow_html=True)
 # Add a blank default choice as the first item in the list
 summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
 selected_summer_temp = st.selectbox("", summer_temp_choices)
@@ -163,7 +162,7 @@ countries = ['Bangladesh', 'Brazil', 'Canada', 'China', 'Colombia', 'Cuba', 'Dom
 
 
 # User Input: Country Selection
-st.subheader("Which country are you originally from?")
+st.markdown("<h3 style='margin: 0;'>Which country are you originally from?</h3>", unsafe_allow_html=True)
 countries_choices = ["Select an option"] + countries
 index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
 choice = countries[index_choice - 1]
