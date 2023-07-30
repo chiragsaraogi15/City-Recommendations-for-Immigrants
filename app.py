@@ -213,8 +213,8 @@ if st.button("Submit"):
     }
 
     .card-img-container {
-        width: 330px;
-        height: 330px;
+        width: 250px;
+        height: 250px;
         overflow: hidden;
     }
 
