@@ -223,6 +223,7 @@ if st.button("Submit"):
             f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
             f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
             f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p></div>'
+            f'<hr>'
             f'<p>{best_suburbs_link}</p></div>'
         )
 
