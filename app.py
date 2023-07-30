@@ -219,9 +219,10 @@ if st.button("Submit"):
     }
 
     .card-img {
-        width: 95%;
-        height: 95%;
+        width: 90%;
+        height: 90%;
         object-fit: cover;
+        border: 2px solid #ccc;
     }
     </style>
     """
