@@ -219,8 +219,8 @@ if st.button("Submit"):
     }
 
     .card-img {
-        width: 100%;
-        height: 100%;
+        width: 95%;
+        height: 95%;
         object-fit: cover;
     }
     </style>
