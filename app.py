@@ -213,10 +213,9 @@ if st.button("Submit"):
     }
 
     .card-img-container {
-        width: 200px; /* Reduce the width to 200px */
-        height: 150px; /* Reduce the height to 150px */
+        width: 180px;
+        height: 180px;
         overflow: hidden;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add box-shadow for a soft border effect */
     }
 
     .card-img {
@@ -241,11 +240,7 @@ if st.button("Submit"):
         best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
 
         image_link = row["Image Link"]
-        image_html = (
-            f'<div class="card-img-container">'
-            f'<img class="card-img" src="{image_link}" alt="{index} Image">'
-            f'</div>'
-        )
+        image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
 
         city_card_html = (
             f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
