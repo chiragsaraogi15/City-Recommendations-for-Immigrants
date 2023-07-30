@@ -223,8 +223,8 @@ if st.button("Submit"):
             f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
             f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
             f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p></div>'
-            f'<hr>'
-            f'<p>{best_suburbs_link}</p></div>'
+            f'<p>{best_suburbs_link}</p>' 
+            f'</div>' 
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
