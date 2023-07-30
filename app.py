@@ -213,15 +213,18 @@ if st.button("Submit"):
     }
 
     .card-img-container {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px; 
         overflow: hidden;
+        border-radius: 50%; 
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     }
 
     .card-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 50%; /* Ensure the image inside the container is also circular */
     }
     </style>
     """
@@ -240,7 +243,11 @@ if st.button("Submit"):
         best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
 
         image_link = row["Image Link"]
-        image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+        image_html = (
+            f'<div class="card-img-container">'
+            f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+            f'</div>'
+        )
 
         city_card_html = (
             f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
@@ -255,5 +262,5 @@ if st.button("Submit"):
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
-            
+                
 
