@@ -43,7 +43,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
     df = pd.read_pickle('tagged_data.pkl')
 
     selected_columns = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
-                        'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',choice]
+                        'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK']
 
     filtered_df = df[selected_columns]
 
@@ -77,7 +77,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
     filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
                                           ascending=[False, False, True, False, False])
 
-    desired_columns = ['PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP']
+    desired_columns = ['STATE_x','PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP','BEST_SUBURBS','IMAGE_LINK']
     filtered_df = filtered_df[desired_columns]
     return filtered_df
 
@@ -178,7 +178,10 @@ if st.button("Submit"):
        'A_MEAN': 'Average Annual Salary',
        choice: 'Immigrant Count',
        'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
-       'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers'
+       'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers',
+       'STATE_x': 'State',
+       'BEST_SUBURBS': 'Best Suburbs',
+       'IMAGE_LINK': 'Image Link'
     }
     
    
@@ -209,6 +212,9 @@ if st.button("Submit"):
         coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
         hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
 
+        best_suburbs_value = row["Best Suburbs"]
+        best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
         city_card_html = (
             f'<div class="card"><h2>{idx}. {index}</h2>'
             f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
@@ -217,6 +223,7 @@ if st.button("Submit"):
             f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
             f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
             f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p></div>'
+            f'<p>{best_suburbs_link}</p></div>'
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
