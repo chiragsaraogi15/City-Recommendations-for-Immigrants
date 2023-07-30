@@ -222,7 +222,7 @@ if st.button("Submit"):
         width: 90%;
         height: 90%;
         object-fit: cover;
-        border: 2px solid #ccc;
+        border: 4px solid #ccc;
     }
     </style>
     """
