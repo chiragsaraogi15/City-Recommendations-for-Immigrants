@@ -213,18 +213,16 @@ if st.button("Submit"):
     }
 
     .card-img-container {
-        width: 150px;
-        height: 150px; 
+        width: 200px; /* Reduce the width to 200px */
+        height: 150px; /* Reduce the height to 150px */
         overflow: hidden;
-        border-radius: 50%; 
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add box-shadow for a soft border effect */
     }
 
     .card-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 50%; /* Ensure the image inside the container is also circular */
     }
     </style>
     """
@@ -262,5 +260,3 @@ if st.button("Submit"):
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
-                
-
