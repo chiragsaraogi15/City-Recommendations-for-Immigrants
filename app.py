@@ -189,6 +189,7 @@ if st.button("Submit"):
    
     st.subheader("Top 5 Recommendations:")
    
+    '''
     # Create a CSS style for the cards
     card_style = """
     <style>
@@ -228,7 +229,66 @@ if st.button("Submit"):
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
-        
+    '''
+    
+    card_style = """
+    <style>
+    .card {
+        display: flex;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
 
+    .card-left {
+        flex: 1;
+    }
 
+    .card-right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-img {
+        max-width: 200px;
+        max-height: 200px;
+        object-fit: cover;
+    }
+    </style>
+    """
+
+    st.write(card_style, unsafe_allow_html=True)
+
+    # Display each row as a card with city number and image
+    for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
+        employment_count = f'{row["Employment Count"]:,}'
+        average_salary = f'${row["Average Annual Salary"]:,.0f}'  # Remove decimal places
+        immigrant_count = f'{row["Immigrant Count"]:,}'
+        coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+        hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
+
+        best_suburbs_value = row["Best Suburbs"]
+        best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
+        image_link = row["Image Link"]
+        image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+
+        city_card_html = (
+            f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
+            f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
+            f'<p><strong>Employment Count:</strong> {employment_count}</p>'
+            f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
+            f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
+            f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+            f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
+            f'<p>{best_suburbs_link}</p></div>'
+            f'<div class="card-right">{image_html}</div></div>'
+        )
+
+        st.write(city_card_html, unsafe_allow_html=True)
+            
 
