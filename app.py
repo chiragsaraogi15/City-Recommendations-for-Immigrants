@@ -211,10 +211,11 @@ if st.button("Submit"):
         immigrant_count = f'{row["Immigrant Count"]:,}'
         coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
         hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
-
-        best_suburbs_value = row["Best Suburbs"]
-        best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
-
+        
+        '''
+        #best_suburbs_value = row["Best Suburbs"]
+        #best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+        
         city_card_html = (
             f'<div class="card"><h2>{idx}. {index}</h2>'
             f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
@@ -228,9 +229,20 @@ if st.button("Submit"):
         )
 
         st.write(city_card_html, unsafe_allow_html=True)
+        '''
 
+        best_suburbs_value = row["Best Suburbs"]
+        best_suburbs_link = f'[{index} - Click to learn more about the best suburbs to live in]({best_suburbs_value})'
 
-
+        with st.beta_container():
+            st.write(f'### {idx}. {index}')
+            st.write(f'**Profession:** {row["Profession"]}')
+            st.write(f'**Employment Count:** {employment_count}')
+            st.write(f'**Average Annual Salary:** {average_salary}')
+            st.write(f'**Immigrant Count:** {immigrant_count}')
+            st.write(f'**Coldest Temperature in Winters:** {coldest_temp_winter}°F')
+            st.write(f'**Hottest Temperature in Summers:** {hottest_temp_summer}°F')
+            st.markdown(best_suburbs_link)
 
 
 
