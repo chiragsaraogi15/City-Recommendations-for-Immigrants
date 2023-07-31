@@ -185,6 +185,7 @@ def main():
 
         # Step 1: Take input for user's profession name
         st.markdown("<h4 style='margin: 0;'>What kind of work do you do?</h4>", unsafe_allow_html=True)
+        st.write("For example: Software Engineer, Doctor, Teacher, etc.")
         user_profession = st.text_input("")
 
 
