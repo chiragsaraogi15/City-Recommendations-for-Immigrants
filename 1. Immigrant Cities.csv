@@ -1,0 +1,39 @@
+CITY,STATE,TOTAL_POPULATION,FOREIGN_BORN_POPULATION,SAFETY_INDEX,COST_OF_LIVING_INDEX,WINTER_COLDEST_TEMP,SUMMER_HOTTEST_TEMP,BEST_SUBURBS,IMAGE_LINK
+Atlanta,Georgia,"540,932","39,733",70,100,43,80,https://www.niche.com/places-to-live/search/best-suburbs-for-families/m/atlanta-metro-area/,https://cdn.britannica.com/27/64827-050-0E5634E9/Atlanta-Georgia.jpg
+Austin,Texas,"790,593","159,353",70,107,50,84,https://www.niche.com/places-to-live/search/best-suburbs-for-families/m/austin-metro-area/,https://cdn.britannica.com/23/64823-004-DD7A7A3F/Austin-Texas.jpg
+Baltimore,Maryland,"637,418","41,343",63,107,32,77,https://www.niche.com/places-to-live/search/best-suburbs/m/baltimore-metro-area/,https://cdn.britannica.com/92/89792-004-B32AF778.jpg
+Boston,Massachusetts,"645,187","161,740",73,133,29,74,https://www.niche.com/places-to-live/search/best-suburbs/m/boston-metro-area/,https://cdn.britannica.com/90/64790-050-219CABA6/Boston-Massachusetts.jpg
+Buffalo,New York,"270,221","19,618",70,97,25,71,https://www.niche.com/places-to-live/search/best-suburbs/m/buffalo-metro-area/,https://cdn.britannica.com/75/64775-004-8FFF5E3A.jpg
+Charlotte,North Carolina,"704,417","96,734",77,98,42,80,https://www.niche.com/places-to-live/search/best-suburbs/m/charlotte-metro-area/,https://cdn.britannica.com/53/64753-050-735F5840/Charlotte-NC.jpg
+Chicago,Illinois,"2,850,502","588,480",70,100,22,73,https://www.niche.com/places-to-live/search/best-suburbs/m/chicago-metro-area/,https://cdn.britannica.com/51/64751-004-060505A1.jpg
+Cincinnati,Ohio,"333,013","11,471",68,92,31,76,https://www.niche.com/places-to-live/search/best-neighborhoods/m/cincinnati-metro-area/,https://cdn.britannica.com/48/64748-004-86832390.jpg
+Dallas,Texas,"1,299,590","322,072",62,99,46,86,https://www.niche.com/places-to-live/search/best-suburbs/m/dallas-fort-worth-metro-area/,https://cdn.britannica.com/27/64727-050-78898899/Dallas-Texas.jpg
+Denver,Colorado,"610,345","95,585",63,112,29,73,https://www.niche.com/places-to-live/search/best-suburbs/m/denver-metro-area/,https://cdn.britannica.com/19/64719-050-75E51B8E/Denver-Colorado.jpg
+Detroit,Michigan,"910,848","60,170",56,93,25,74,https://www.niche.com/places-to-live/search/best-suburbs/m/detroit-metro-area/,https://cdn.britannica.com/17/64717-050-3700701A/Detroit-Michigan.jpg
+Houston,Texas,"2,260,918","644,167",67,96,52,84,https://www.niche.com/places-to-live/search/best-suburbs/m/houston-metro-area/,https://cdn.britannica.com/30/64630-004-725B37E5.jpg
+Indianapolis,Indiana,"807,640","63,241",67,90,27,75,https://www.niche.com/places-to-live/search/best-suburbs/m/indianapolis-metro-area/,https://cdn.britannica.com/21/64621-050-DBBFA378/Indianapolis-Ind.jpg
+Jacksonville,Florida,"813,518","73,992",72,99,53,82,https://www.niche.com/places-to-live/search/best-suburbs/m/jacksonville-area/,https://cdn.britannica.com/08/64608-050-7E2B21E7/Jacksonville-Florida.jpg
+Las Vegas,Nevada,"567,610","119,437",65,101,47,91,https://www.niche.com/places-to-live/search/best-suburbs/m/las-vegas-area/,https://cdn.britannica.com/22/96822-050-EFDD0195/Las-Vegas-Nevada.jpg
+Los Angeles,California,"3,831,880","1,521,119",61,141,57,69,https://www.niche.com/places-to-live/search/best-suburbs/m/los-angeles-metro-area/,https://cdn.britannica.com/56/64556-004-EB2E3242.jpg
+Miami,Florida,"433,143","244,352",71,110,68,84,https://www.niche.com/places-to-live/search/best-suburbs/m/miami-metro-area/,https://cdn.britannica.com/17/64517-050-BB503609/Miami-Florida.jpg
+Nashville,Tennessee,"605,466","70,404",70,100,37,79,https://www.niche.com/places-to-live/search/best-suburbs/m/nashville-metro-area/,https://cdn.britannica.com/90/109790-050-07723246/Nashville-Tennessee.jpg
+New Orleans,Louisiana,"354,850","18,968",63,92,53,83,https://www.niche.com/places-to-live/search/best-suburbs/m/new-orleans-metro-area/,https://cdn.britannica.com/92/64492-004-3C7C14A9.jpg
+New York,New York,"8,391,881","2,996,580",70,128,32,77,https://www.niche.com/places-to-live/search/best-suburbs/s/new-york/,https://cdn.britannica.com/89/64489-004-768C81D1.jpg
+Orlando,Florida,"235,876","39,210",67,101,60,82,https://www.niche.com/places-to-live/search/best-suburbs/m/orlando-metro-area/,https://cdn.britannica.com/84/197984-050-A421923E/Orlando-Florida.jpg
+Philadelphia,Pennsylvania,"1,547,297","179,444",61,103,32,78,https://www.niche.com/places-to-live/search/best-suburbs/m/philadelphia-metro-area/,https://cdn.britannica.com/57/64457-004-56D438B7.jpg
+Phoenix,Arizona,"1,593,660","346,430",71,104,54,93,https://www.niche.com/places-to-live/search/best-suburbs/m/phoenix-metro-area/,https://cdn.britannica.com/55/64455-004-B51A7BBB.jpg
+Pittsburgh,Pennsylvania,"311,640","19,993",70,93,28,73,https://www.niche.com/places-to-live/search/best-suburbs/m/pittsburgh-metro-area/,https://cdn.britannica.com/53/64453-004-C3936821.jpg
+Portland,Oregon,"566,606","71,380",84,113,22,69,https://www.niche.com/places-to-live/search/best-suburbs/m/portland-or-metro-area/,https://cdn.britannica.com/52/64452-050-5D249ED3/Portland-Oregon.jpg
+Raleigh,North Carolina,"405,197","53,154",82,100,40,79,https://www.niche.com/places-to-live/search/best-suburbs-for-families/m/raleigh-metro-area/,https://cdn.britannica.com/39/64439-050-1B9B66DB/Raleigh-North-Carolina.jpg
+Richmond,Virginia,"204,451","12,301",61,84,36,78,https://www.niche.com/places-to-live/search/best-suburbs/m/richmond-area/,https://cdn.britannica.com/34/64434-004-64E49448.jpg
+Riverside,California,"297,863","69,792",70,116,55,77,https://www.niche.com/places-to-live/search/best-suburbs/c/riverside-county-ca/,https://www.whereig.com/usa/maps/cities/where-is-riverside-ca.jpg
+Sacramento,California,"466,685","102,076",73,120,46,75,https://www.niche.com/places-to-live/search/best-suburbs/m/sacramento-metro-area/,https://cdn.britannica.com/25/64425-050-1C4E3970/Sacramento-California.jpg
+San Antonio,Texas,"1,373,677","180,895",73,93,50,84,https://www.niche.com/places-to-live/search/best-suburbs/m/san-antonio-metro-area/,https://cdn.britannica.com/14/64414-050-150D25B5/San-Antonio-Texas.jpg
+San Diego,California,"1,306,228","325,819",77,136,58,71,https://www.niche.com/places-to-live/search/best-suburbs-for-families/m/san-diego-metro-area/,https://cdn.britannica.com/13/64413-004-BE583AC6.jpg
+San Francisco,California,"815,358","278,369",70,179,49,63,https://www.niche.com/places-to-live/search/best-suburbs/m/san-francisco-metro-area/,https://cdn.britannica.com/12/64412-050-41065C81/San-Francisco-California.jpg
+San Jose,California,"964,679","367,711",74,174,52,71,https://www.redfin.com/blog/san-jose-suburbs/,https://cdn.britannica.com/11/64411-050-2782B44A/San-Jose-California.jpg
+Seattle,Washington,"616,669","105,154",68,125,42,66,https://www.niche.com/places-to-live/search/best-suburbs/m/seattle-metro-area/,https://cdn.britannica.com/95/64395-050-91FA3B83/Seattle-Washington.jpg
+St. Louis,Missouri,"356,587","21,177",43,90,30,80,https://www.niche.com/places-to-live/search/best-suburbs/m/st-louis-metro-area/,https://cdn.britannica.com/32/113732-004-0D323E80.jpg
+Tampa,Florida,"343,879","50,377",76,101,61,83,https://www.niche.com/places-to-live/search/best-suburbs/m/tampa-metro-area/,https://cdn.britannica.com/60/64360-050-3660D722/Tampa-Fla.jpg
+Virginia Beach,Virginia,"433,575","36,727",80,99,42,79,https://www.extraspace.com/blog/moving/city-guides/safe-affordable-neighborhoods-virginia-beach/,https://cdn.britannica.com/68/197968-004-C90E37E6.jpg
+Washington,D.C.,"599,657","72,110",62,120,35,79,https://www.niche.com/places-to-live/search/best-suburbs/m/washington-dc-metro-area/,https://cdn.britannica.com/03/64303-050-65ECB7D0/Washington-DC-locator-map-united-states-city.jpg
