@@ -14,23 +14,17 @@ nltk.download('averaged_perceptron_tagger')
 
 def about_page():
     st.title("About: Making the Right Choice")
-    st.write("Hello, everyone! My name is Chirag Saraogi, an immigrant from India with around 10 years of experience living in the United States. Through interactions with hundreds of fellow immigrants, I realized the challenges we face when deciding on the perfect city to call home. To address this issue, I have developed a sophisticated city recommendation system that takes into account several essential factors that are crucial for immigrants when choosing a city to settle in and build their future.")
+    st.write("Hello, everyone! My name is Chirag Saraogi, an immigrant from India with around 10 years of experience living in the United States. Through interactions with hundreds of fellow immigrants, I realized the challenges immigrants face when deciding on the perfect city to call home. To address this issue, I have developed a sophisticated city recommendation system that takes into account several essential factors that are crucial for immigrants when choosing a city to settle in and build their future.")
     
     st.subheader("The Most Important Factors for Immigrants:")
     st.markdown("""
     When it comes to making a life-changing decision like choosing a city to live in, there are several key factors that play a significant role for immigrants. Here are the most critical aspects that my city recommendation system considers:
     - **Job Opportunities in the City:**
-        - The availability of suitable job opportunities is a major consideration for immigrants seeking to build their careers and secure their future. Our recommendation system analyzes job data to suggest cities with thriving industries and employment prospects in your chosen profession.
     - **Cost of Living:**
-        - The cost of living varies significantly across cities in the United States. We take into account factors such as housing, utilities, transportation, and daily expenses to provide you with insights into the affordability of each city.
     - **Immigrant Community in the City:**
-        - For immigrants, finding a supportive community with a familiar culture and shared experiences can be essential for a smooth transition. Our recommendation system highlights cities with vibrant immigrant communities to help you feel at home.
     - **Weather Year Round:**
-        - Climate preferences are crucial for personal comfort and well-being. We provide information on winter and summer temperatures in each city, helping you choose a climate that suits your preferences.
     - **Safety Record:**
-        - Safety is a top priority for anyone considering a new city to call home. Our recommendation system includes safety indices and crime rates to ensure your peace of mind.
-    - **Public Education Quality:**
-        - For families with children, the quality of public education is of paramount importance. Our system assesses the educational offerings in each city, allowing you to make informed decisions about your child's education.
+    - **Public Education Quality:**      
     """)
 
 
