@@ -240,7 +240,7 @@ if st.button("Submit"):
         # Display each row as a card with city number and image
         for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
             employment_count = f'{row["Employment Count"]:,}'
-            average_salary = f'${row["Average Annual Salary"]:,.0f}'  # Remove decimal places
+            average_salary = f'${row["Average Annual Salary"]:,.0f}' if row["Average Annual Salary"] > 0 else "Information not available"
             immigrant_count = f'{row["Immigrant Count"]:,}'
             coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
             hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
@@ -265,7 +265,7 @@ if st.button("Submit"):
 
             st.write(city_card_html, unsafe_allow_html=True)
             
-        st.markdown("<br>", unsafe_allow_html=True)  # Adding a line space before the text
+        st.markdown("<br>", unsafe_allow_html=True)
 
         message = """
         <font size="4"><i><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</i></font>
