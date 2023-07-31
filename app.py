@@ -370,6 +370,7 @@ def main():
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
+                st.markdown("<br>", unsafe_allow_html=True)
                 
                 st.subheader("Feedback")
                 feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
