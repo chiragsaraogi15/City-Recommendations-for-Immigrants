@@ -12,6 +12,13 @@ nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
+def collect_feedback(feedback_text):
+    if feedback_text:
+        feedback_df = pd.DataFrame({'Feedback': [feedback_text]})
+        feedback_df.to_csv('feedback.csv', mode='a', index=False, header=not st.session_state.feedback_saved)
+        st.session_state.feedback_saved = True
+        st.success("Thank you for your feedback!")
+
 def about_page():
     st.title("About: Making the Right Choice")
     st.write("Hello, everyone! My name is Chirag Saraogi, an immigrant from India with around 10 years of experience living in the United States. Through interactions with hundreds of fellow immigrants, I realized the challenges immigrants face when deciding on the perfect city to call home. To address this issue, I have developed a sophisticated city recommendation system that takes into account several essential factors that are crucial for immigrants when choosing a city to settle in and build their future.")
@@ -19,12 +26,12 @@ def about_page():
     st.subheader("The Most Important Factors for Immigrants:")
     st.markdown("""
     When it comes to making a life-changing decision like choosing a city to live in, there are several key factors that play a significant role for immigrants. Here are the most critical aspects that my city recommendation system considers:
-    - **Job Opportunities in the City:**
-    - **Cost of Living:**
-    - **Immigrant Community in the City:**
-    - **Weather Year Round:**
-    - **Safety Record:**
-    - **Public Education Quality:**      
+    - **Job Opportunities in the City**
+    - **Cost of Living**
+    - **Immigrant Community in the City**
+    - **Weather Year Round**
+    - **Safety Record**
+    - **Public Education Quality**      
     """)
     
     st.subheader("Data Sources and Comprehensive Data Repository:")
@@ -362,7 +369,12 @@ def main():
                 <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
-    
+                
+                
+                st.subheader("Feedback")
+                feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
+                if st.button("Submit Feedback"):
+                    collect_feedback(feedback_text)
     
     elif page == "About":
         about_page()
