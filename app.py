@@ -265,4 +265,8 @@ if st.button("Submit"):
 
             st.write(city_card_html, unsafe_allow_html=True)
             
-            
+        st.markdown("Note: this recommendation system takes into account factors like job availabilities for your profession, average annual salary, cost of living, immigrant count from your home country and safety index in the city. "
+                    "Cities have been ranked based on these factors and in the same order mentioned above.")
+        
+        
+  
