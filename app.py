@@ -62,17 +62,16 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
         except (ValueError, SyntaxError):
             # If the literal_eval fails, return an empty set
             return set()
-
-
-    filtered_df['TAGS'] = filtered_df['TAGS'].apply(string_to_set)
+            
 
     filtered_df['EXPANDED_TAGS'] = filtered_df['EXPANDED_TAGS'].apply(string_to_set)
 
     filtered_df['Profession_Score'] = filtered_df['EXPANDED_TAGS'].apply(lambda x: jaccard_similarity(x, user_input_tags))
 
-    filtered_df = filtered_df.sort_values(by='Profession_Score', ascending=False) \
-                             .groupby('CITY').head(1) \
-                             .sort_index()
+    filtered_df = filtered_df[filtered_df['Profession_Score'] > 0] \
+                     .sort_values(by='Profession_Score', ascending=False) \
+                     .groupby('CITY').head(1) \
+                     .sort_index()
 
     filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
                                           ascending=[False, False, True, False, False])
@@ -194,7 +193,7 @@ if st.button("Submit"):
     
     else:
    
-        st.subheader("Top 5 Recommendations:")
+        st.subheader("Top Recommendations:")
        
         
         card_style = """
