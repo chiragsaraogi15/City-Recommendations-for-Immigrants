@@ -198,8 +198,8 @@ if st.button("Submit"):
     else:
    
         st.subheader("Top Recommendations:")
-       
         
+        # CSS style for the cards
         card_style = """
         <style>
         .card {
@@ -233,6 +233,21 @@ if st.button("Submit"):
             height: 90%;
             object-fit: cover;
             border: 1px solid black;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* Mobile layout */
+            .card {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card-left, .card-right {
+                width: 100%;
+                text-align: center;
+            }
+            .card-right {
+                margin-top: 1rem;
+            }
         }
         </style>
         """
