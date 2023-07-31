@@ -26,7 +26,17 @@ def about_page():
     - **Safety Record:**
     - **Public Education Quality:**      
     """)
+    
+    st.subheader("Data Sources and Comprehensive Data Repository:")
+    st.write("To create a robust and comprehensive recommendation system, we gathered data from reputable sources to compile a comprehensive data repository. The following are the primary data sources we used:")
 
+    st.markdown("""
+    - [Safety Record - WalletHub](https://wallethub.com/edu/safest-cities-in-america/41926)
+    - [Cost of Living - Numbeo](https://www.numbeo.com/cost-of-living/region_rankings_current.jsp?region=021)
+    - [Weather Year Round - Infoplease](https://www.infoplease.com/math-science/weather/climate-of-100-selected-us-cities)
+    - [Job Opportunities in the City - Bureau of Labor Statistics](https://www.bls.gov/oes/current/oessrcma.htm)
+    - [Countries of Origin for Immigrants - World Population Review](https://worldpopulationreview.com/country-rankings/us-immigration-by-country)
+    """)
 
 def get_pos_tag(token):
     pos_tag = nltk.pos_tag([token])[0][1]
