@@ -256,7 +256,7 @@ if st.button("Submit"):
                 f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
                 f'<p><strong>Employment Count:</strong> {employment_count}</p>'
                 f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
-                f'<p><strong>Immigrant Count:</strong> {immigrant_count}</p>'
+                f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
                 f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
                 f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
                 f'<p>{best_suburbs_link}</p></div>'
