@@ -92,6 +92,24 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 stop_words = set(stopwords.words('english'))
 
 def main():
+    
+    st.markdown(
+        """
+        <style>
+        .sidebar .sidebar-content {
+            background-image: linear-gradient(to bottom, #0575E6, #021B79);
+            color: white;
+        }
+        
+        .css-17eq0hr {
+            font-size: 22px;
+            text-align: left;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to", ("Home", "About"))
 
