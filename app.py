@@ -102,6 +102,8 @@ st.write(long_paragraph2)
 
 st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you. \n")
 
+st.markdown("<br>", unsafe_allow_html=True)
+
 # Step 1: Take input for user's profession name
 st.markdown("<h4 style='margin: 0;'>What kind of work do you do?</h4>", unsafe_allow_html=True)
 user_profession = st.text_input("")
