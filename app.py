@@ -268,7 +268,7 @@ if st.button("Submit"):
         st.markdown("<br>", unsafe_allow_html=True)  # Adding a line space before the text
 
         message = """
-        <font size="4"><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</font>
-        <font size="4">Cities have been ranked based on these factors and in the same order mentioned above.</font>
+        <font size="4"><i>Note:</i> this recommendation system takes into account factors like <i>job availabilities</i> for your profession, <i>average annual salary</i>, <i>cost of living</i>, <i>immigrant count</i> from your home country, and <i>safety index</i> in the city.</font>
+        <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
         """
         st.markdown(message, unsafe_allow_html=True)
