@@ -265,8 +265,10 @@ if st.button("Submit"):
 
             st.write(city_card_html, unsafe_allow_html=True)
             
-        st.markdown("Note: this recommendation system takes into account factors like job availabilities for your profession, average annual salary, cost of living, immigrant count from your home country and safety index in the city. "
-                    "Cities have been ranked based on these factors and in the same order mentioned above.")
-        
-        
-  
+        st.markdown("<br>", unsafe_allow_html=True)  # Adding a line space before the text
+
+        message = """
+        <font size="4"><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</font>
+        <font size="4">Cities have been ranked based on these factors and in the same order mentioned above.</font>
+        """
+        st.markdown(message, unsafe_allow_html=True)
