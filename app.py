@@ -96,14 +96,37 @@ def main():
     st.markdown(
         """
         <style>
+        /* Remove the default Streamlit sidebar style */
         .sidebar .sidebar-content {
-            background-image: linear-gradient(to bottom, #0575E6, #021B79);
-            color: white;
+            width: 300px;
+            padding: 2rem;
+            background-color: #f9f9f9;
         }
-        
-        .css-17eq0hr {
-            font-size: 22px;
-            text-align: left;
+
+        /* Style the sidebar navigation links */
+        .sidebar .sidebar-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar .sidebar-list li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar .sidebar-list li a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar .sidebar-list li a:hover {
+            background-color: #0575E6;
+            color: white;
         }
         </style>
         """,
