@@ -187,10 +187,12 @@ if st.button("Submit"):
     recommendations_df = recommendations_df.rename(columns=column_mapping)
     
     if recommendations_df.empty:
-        st.write("<h2 style='color: #FF5733; text-align: center;'>Oops! 🙁</h2>")
-        st.write("<p style='text-align: center;'>We currently don't have enough data to provide recommendations based on your preferences.</p>")
-        st.write("<p style='text-align: center;'>You can try changing your preferences or try later. We truly apologize for the inconvenience.</p>", unsafe_allow_html=True)
-    
+        message = """
+        <h2 style='color: #FF5733; text-align: center;'>Oops! 🙁</h2>
+        <p style='text-align: center;'>We currently don't have enough data to provide recommendations based on your preferences.</p>
+        <p style='text-align: center;'>Please try changing your preferences to get better results. We truly apologize for the inconvenience.</p>
+        """
+        st.markdown(message, unsafe_allow_html=True)
     else:
    
         st.subheader("Top Recommendations:")
