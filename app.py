@@ -12,6 +12,13 @@ nltk.download('wordnet')
 nltk.download('stopwords')
 nltk.download('averaged_perceptron_tagger')
 
+def about_page():
+    st.title("About")
+    st.write("This is an example of a city recommendation system built using Streamlit.")
+    st.write("The recommendation engine uses factors like job availabilities for your profession, average annual salary, cost of living, immigrant count from your home country, and safety index in the city to rank cities.")
+    st.write("Cities have been ranked based on these factors and in the same order mentioned above.")
+
+
 def get_pos_tag(token):
     pos_tag = nltk.pos_tag([token])[0][1]
     return pos_tag
@@ -84,208 +91,221 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 # Your remaining code for the recommendations model
 stop_words = set(stopwords.words('english'))
 
-# heading and description text 
-st.title("USA City Recommendation System")
+def main():
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Go to", ("Home", "About"))
 
-long_paragraph = (
-        "United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from. "
-        "Some immigrants move here to be with their families, and some move here to make a better life and find their dream job. \n"       
-)
-st.write(long_paragraph)
+    if page == "Home":
+        # heading and description text 
+        st.title("USA City Recommendation System")
 
-long_paragraph2 = (
-        "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
-        "As immigrants, factors like **job availability**, **community**, **weather**, **education**, **affordability** and **safety** are a few factors that are important when making a decision on where to live. \n"
-)
+        long_paragraph = (
+                "United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from. "
+                "Some immigrants move here to be with their families, and some move here to make a better life and find their dream job. \n"       
+        )
+        st.write(long_paragraph)
 
-st.write(long_paragraph2)
+        long_paragraph2 = (
+                "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
+                "As immigrants, factors like **job availability**, **community**, **weather**, **education**, **affordability** and **safety** are a few factors that are important when making a decision on where to live. \n"
+        )
 
-st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you. \n")
+        st.write(long_paragraph2)
 
-st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you. \n")
 
-# Step 1: Take input for user's profession name
-st.markdown("<h4 style='margin: 0;'>What kind of work do you do?</h4>", unsafe_allow_html=True)
-user_profession = st.text_input("")
-
-
-# Step 2: taking weather input preferences
-coldest_temp = None
-hottest_temp = None
-
-winter_temp_mapping = {
-    "1. Not cold at all (above 60°F)": 60,
-    "2. Slightly cool (50-60°F)": 50,
-    "3. Little cold (40-50°F)": 40,
-    "4. Very cold (30-40°F)": 30,
-    "5. Extremely cold (below 30°F)": 20
-}
-
-summer_temp_mapping = {
-    "1. Not hot at all (below 65°F)": 65,
-    "2. Slightly hot (65 - 70°F)": 70,
-    "3. Little hot (70 - 80°F)": 80,
-    "4. Very hot (80 - 90°F)": 90,
-    "5. Extreme hot (above 90°F)": 100
-}
-
-# Step 2: Take input for coldest temperature comfortable with
-st.markdown("<h4 style='margin: 0;'>How do you like your winters?</h4>", unsafe_allow_html=True)
-# Add a blank default choice as the first item in the list
-winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
-selected_winter_temp = st.selectbox("", winter_temp_choices)
-
-# Get the actual coldest temperature based on the user's choice
-if selected_winter_temp != "Select an option":
-    coldest_temp = winter_temp_mapping[selected_winter_temp]
-else:
-    coldest_temp = None
-    
-
-# Step 3: Take input for hottest temperature comfortable with
-st.markdown("<h4 style='margin: 0;'>How do you like your summers?</h4>", unsafe_allow_html=True)
-# Add a blank default choice as the first item in the list
-summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
-selected_summer_temp = st.selectbox("", summer_temp_choices)
-
-# Get the actual hottest temperature based on the user's choice
-if selected_summer_temp != "Select an option":
-    hottest_temp = summer_temp_mapping[selected_summer_temp]
-else:
-    hottest_temp = None
- 
- 
-# Step 4: Take input for the country from the user
-countries = ['Bangladesh', 'Brazil', 'Canada', 'China', 'Colombia', 'Cuba', 'Dominican Republic', 'El Salvador',
-             'Ethiopia', 'Guatemala', 'Haiti', 'India', 'Iran', 'Iraq', 'Jamaica', 'Korea', 'Mexico', 'Nepal',
-             'Nigeria', 'Pakistan', 'Philippines', 'United Kingdom', 'Vietnam', 'Other Countries']
-
-
-
-# User Input: Country Selection
-st.markdown("<h4 style='margin: 0;'>Which country are you originally from?</h4>", unsafe_allow_html=True)
-countries_choices = ["Select an option"] + countries
-index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
-choice = countries[index_choice - 1]
-
-
-if st.button("Submit"):
-    recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
-   
-    column_mapping = {
-       'CITY': 'City',
-       'PROFESSION': 'Profession',
-       'TOT_EMP': 'Employment Count',
-       'A_MEAN': 'Average Annual Salary',
-       choice: 'Immigrant Count',
-       'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
-       'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers',
-       'STATE_x': 'State',
-       'BEST_SUBURBS': 'Best Suburbs',
-       'IMAGE_LINK': 'Image Link'
-    }
-    
-   
-    recommendations_df = recommendations_df.rename(columns=column_mapping)
-    
-    if recommendations_df.empty:
-        message = """
-        <h2 style='color: #FF5733; text-align: center;'>Oops! 🙁</h2>
-        <p style='text-align: center;'>We currently don't have enough data to provide recommendations based on your preferences.</p>
-        <p style='text-align: center;'>Please try changing your preferences to get better results. We truly apologize for the inconvenience.</p>
-        """
-        st.markdown(message, unsafe_allow_html=True)
-    else:
-   
-        st.subheader("Top Recommendations:")
-        
-        # CSS style for the cards
-        card_style = """
-        <style>
-        .card {
-            display: flex;
-            padding: 1rem;
-            margin: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-        }
-
-        .card-left {
-            flex: 1;
-        }
-
-        .card-right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-img-container {
-            width: 180px;
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .card-img {
-            width: 90%;
-            height: 90%;
-            object-fit: cover;
-            border: 1px solid black;
-        }
-
-        @media screen and (max-width: 768px) {
-            /* Mobile layout */
-            .card {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card-left, .card-right {
-                width: 100%;
-                text-align: center;
-            }
-            .card-right {
-                margin-top: 1rem;
-            }
-        }
-        </style>
-        """
-
-        st.write(card_style, unsafe_allow_html=True)
-
-        # Display each row as a card with city number and image
-        for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
-            employment_count = f'{row["Employment Count"]:,}'
-            average_salary = f'${row["Average Annual Salary"]:,.0f}' if row["Average Annual Salary"] > 0 else "Not Available"
-            immigrant_count = f'{row["Immigrant Count"]:,}'
-            coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
-            hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
-
-            best_suburbs_value = row["Best Suburbs"]
-            best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
-
-            image_link = row["Image Link"]
-            image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
-
-            city_card_html = (
-                f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
-                f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
-                f'<p><strong>Employment Count:</strong> {employment_count}</p>'
-                f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
-                f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
-                f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
-                f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
-                f'<p>{best_suburbs_link}</p></div>'
-                f'<div class="card-right">{image_html}</div></div>'
-            )
-
-            st.write(city_card_html, unsafe_allow_html=True)
-            
         st.markdown("<br>", unsafe_allow_html=True)
 
-        message = """
-        <font size="4"><i><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</i></font>
-        <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
-        """
-        st.markdown(message, unsafe_allow_html=True)
+        # Step 1: Take input for user's profession name
+        st.markdown("<h4 style='margin: 0;'>What kind of work do you do?</h4>", unsafe_allow_html=True)
+        user_profession = st.text_input("")
+
+
+        # Step 2: taking weather input preferences
+        coldest_temp = None
+        hottest_temp = None
+
+        winter_temp_mapping = {
+            "1. Not cold at all (above 60°F)": 60,
+            "2. Slightly cool (50-60°F)": 50,
+            "3. Little cold (40-50°F)": 40,
+            "4. Very cold (30-40°F)": 30,
+            "5. Extremely cold (below 30°F)": 20
+        }
+
+        summer_temp_mapping = {
+            "1. Not hot at all (below 65°F)": 65,
+            "2. Slightly hot (65 - 70°F)": 70,
+            "3. Little hot (70 - 80°F)": 80,
+            "4. Very hot (80 - 90°F)": 90,
+            "5. Extreme hot (above 90°F)": 100
+        }
+
+        # Step 2: Take input for coldest temperature comfortable with
+        st.markdown("<h4 style='margin: 0;'>How do you like your winters?</h4>", unsafe_allow_html=True)
+        # Add a blank default choice as the first item in the list
+        winter_temp_choices = ["Select an option"] + list(winter_temp_mapping.keys())
+        selected_winter_temp = st.selectbox("", winter_temp_choices)
+
+        # Get the actual coldest temperature based on the user's choice
+        if selected_winter_temp != "Select an option":
+            coldest_temp = winter_temp_mapping[selected_winter_temp]
+        else:
+            coldest_temp = None
+            
+
+        # Step 3: Take input for hottest temperature comfortable with
+        st.markdown("<h4 style='margin: 0;'>How do you like your summers?</h4>", unsafe_allow_html=True)
+        # Add a blank default choice as the first item in the list
+        summer_temp_choices = ["Select an option"] + list(summer_temp_mapping.keys())
+        selected_summer_temp = st.selectbox("", summer_temp_choices)
+
+        # Get the actual hottest temperature based on the user's choice
+        if selected_summer_temp != "Select an option":
+            hottest_temp = summer_temp_mapping[selected_summer_temp]
+        else:
+            hottest_temp = None
+         
+         
+        # Step 4: Take input for the country from the user
+        countries = ['Bangladesh', 'Brazil', 'Canada', 'China', 'Colombia', 'Cuba', 'Dominican Republic', 'El Salvador',
+                     'Ethiopia', 'Guatemala', 'Haiti', 'India', 'Iran', 'Iraq', 'Jamaica', 'Korea', 'Mexico', 'Nepal',
+                     'Nigeria', 'Pakistan', 'Philippines', 'United Kingdom', 'Vietnam', 'Other Countries']
+
+
+
+        # User Input: Country Selection
+        st.markdown("<h4 style='margin: 0;'>Which country are you originally from?</h4>", unsafe_allow_html=True)
+        countries_choices = ["Select an option"] + countries
+        index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
+        choice = countries[index_choice - 1]
+
+
+        if st.button("Submit"):
+            recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
+           
+            column_mapping = {
+               'CITY': 'City',
+               'PROFESSION': 'Profession',
+               'TOT_EMP': 'Employment Count',
+               'A_MEAN': 'Average Annual Salary',
+               choice: 'Immigrant Count',
+               'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
+               'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers',
+               'STATE_x': 'State',
+               'BEST_SUBURBS': 'Best Suburbs',
+               'IMAGE_LINK': 'Image Link'
+            }
+            
+           
+            recommendations_df = recommendations_df.rename(columns=column_mapping)
+            
+            if recommendations_df.empty:
+                message = """
+                <h2 style='color: #FF5733; text-align: center;'>Oops! 🙁</h2>
+                <p style='text-align: center;'>We currently don't have enough data to provide recommendations based on your preferences.</p>
+                <p style='text-align: center;'>Please try changing your preferences to get better results. We truly apologize for the inconvenience.</p>
+                """
+                st.markdown(message, unsafe_allow_html=True)
+            else:
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.subheader("Top Recommendations:")
+                
+                # CSS style for the cards
+                card_style = """
+                <style>
+                .card {
+                    display: flex;
+                    padding: 1rem;
+                    margin: 1rem;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    background-color: #f9f9f9;
+                }
+
+                .card-left {
+                    flex: 1;
+                }
+
+                .card-right {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .card-img-container {
+                    width: 180px;
+                    height: 180px;
+                    overflow: hidden;
+                }
+
+                .card-img {
+                    width: 90%;
+                    height: 90%;
+                    object-fit: cover;
+                    border: 1px solid black;
+                }
+
+                @media screen and (max-width: 768px) {
+                    /* Mobile layout */
+                    .card {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .card-left, .card-right {
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .card-right {
+                        margin-top: 1rem;
+                    }
+                }
+                </style>
+                """
+
+                st.write(card_style, unsafe_allow_html=True)
+
+                # Display each row as a card with city number and image
+                for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
+                    employment_count = f'{row["Employment Count"]:,}'
+                    average_salary = f'${row["Average Annual Salary"]:,.0f}' if row["Average Annual Salary"] > 0 else "Not Available"
+                    immigrant_count = f'{row["Immigrant Count"]:,}'
+                    coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+                    hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
+
+                    best_suburbs_value = row["Best Suburbs"]
+                    best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
+                    image_link = row["Image Link"]
+                    image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+
+                    city_card_html = (
+                        f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
+                        f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
+                        f'<p><strong>Employment Count:</strong> {employment_count}</p>'
+                        f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
+                        f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
+                        f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+                        f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
+                        f'<p>{best_suburbs_link}</p></div>'
+                        f'<div class="card-right">{image_html}</div></div>'
+                    )
+
+                    st.write(city_card_html, unsafe_allow_html=True)
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                message = """
+                <font size="4"><i><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</i></font>
+                <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
+                """
+                st.markdown(message, unsafe_allow_html=True)
+    
+    
+    elif page == "About":
+        about_page()
+        
+if __name__ == "__main__":
+    main()
