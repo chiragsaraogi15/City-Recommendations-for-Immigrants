@@ -61,8 +61,8 @@ def about_page():
     st.markdown ("""
     The following were the steps followed to make the Recommendation System:
     1. **Data Collection:** Gathered data from reliable sources mentioned above and preprocessed it, ensuring it is properly formatted for analysis.
-    2. **Text Processing: Perform Part-of-Speech (POS) Tagging and Lemmatization** on profession data to create relevant tags for each city. To improve searchability, we use the **fasttext-wiki-news-subwords-300** model to find the top 5 similar words for each tag.
-    3. **User Input Processing:** User inputs are carefully processed to maintain consistent formatting during the matching process.
+    2. **Text Processing:** Performed **Part-of-Speech (POS) Tagging** and **Lemmatization** on profession data to create relevant tags for each city. To improve searchability, we use the **fasttext-wiki-news-subwords-300** model to find the top 5 similar words for each tag.
+    3. **User Input Processing:** User inputs were processed to maintain consistent formatting during the matching process.
     4. **Similarity Calculation:** Used **Jaccard Similarity** method to calculate similarity scores between cities and user preferences, helping identify the best matches.
     5. **Recommendation Generation:** Based on the similarity scores and user preferences, the system filters and sorts the data to provide personalized city recommendations.
     6. **Web App Development:** The recommendation engine is hosted on a web app built using Streamlit, offering an intuitive and user-friendly interface for users to explore city options.
