@@ -164,23 +164,22 @@ def main():
 
     if page == "Home":
         # heading and description text 
-        st.title("USA City Recommendation System")
+        st.title("CitySeeker: Helping Immigrants find their Perfect City")
 
-        long_paragraph = (
-                "United States of America, a dream country for many immigrants coming from different parts of the world are often overwhelmed by the number of opportunities and amazing cities to choose from. "
-                "Some immigrants move here to be with their families, and some move here to make a better life and find their dream job. \n"       
+        intro_paragraph = (
+            "Welcome to CitySeeker! The USA, a dream country for immigrants worldwide, offers endless opportunities and incredible cities to explore. We understand that choosing the right city can be both exciting and overwhelming."
+            "Whether you're reuniting with family, seeking better opportunities, or pursuing your dream career, we're here to help you find the ideal place to call home.\n"
         )
         st.write(long_paragraph)
 
         long_paragraph2 = (
-                "USA is big country comprising of 50 states and 100's of large cities, and deciding where to live can be extremely challenging. "
-                "As immigrants, factors like **job availability**, **community**, **weather**, **education**, **affordability** and **safety** are a few factors that are important when making a decision on where to live. \n"
-        )
+            "Choosing where to live in the USA can be overwhelming. As an immigrant, important factors like job opportunities, community, weather, education, affordability, and safety matter most.\n"
+            )
 
         st.write(long_paragraph2)
 
-        st.markdown("I have created a system that takes in your preferences and provides you with recommendations for cities to consider living in. Let's begin by answering 4 simple questions about you. \n")
-
+        st.markdown("Discover your ideal city with our advanced recommendation system. Answer four simple questions, and we'll provide personalized city suggestions tailored to your preferences. Let's get started!")
+        
         st.markdown("<br>", unsafe_allow_html=True)
 
         # Step 1: Take input for user's profession name
