@@ -170,7 +170,7 @@ def main():
             "Welcome to CitySeeker! The USA, a dream country for immigrants worldwide, offers endless opportunities and incredible cities to explore. We understand that choosing the right city can be both exciting and overwhelming."
             "Whether you're reuniting with family, seeking better opportunities, or pursuing your dream career, we're here to help you find the ideal place to call home.\n"
         )
-        st.write(long_paragraph)
+        st.write(intro_paragraph)
 
         long_paragraph2 = (
             "Choosing where to live in the USA can be overwhelming. As an immigrant, important factors like job opportunities, community, weather, education, affordability, and safety matter most.\n"
