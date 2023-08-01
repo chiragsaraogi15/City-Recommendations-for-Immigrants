@@ -76,12 +76,12 @@ def about_page():
     
     st.markdown("""
     As we consider the factors that influence immigrant settlement patterns in the U.S., we find the following trends:
-    - Immigrants often prefer to live near their own communities when relocating to a new country.
-    - Approximately 74% of immigrants are concentrated in just six states: California, New York, Texas, Florida, New Jersey, and Illinois. In contrast, only 36% of native-born individuals reside in these states.
-    - Immigrant communities tend to gravitate toward areas with major international airports.
-    - Urban areas are popular choices for immigrant settlement.
+    - Immigrants often prefer to **live near their own communities** when relocating to a new country.
+    - Approximately **74%** of immigrants are concentrated in just **six states: California, New York, Texas, Florida, New Jersey, and Illinois**. In contrast, **only 36%** of native-born individuals reside in these states.
+    - Immigrant communities tend to gravitate toward areas with **major international airports**.
+    - **Urban areas** are popular choices for immigrant settlement.
 
-    Taking these insights into account, our recommendation system is designed to focus on the 38 major U.S. cities that are commonly chosen by immigrants, rather than the hundreds of cities available. Additionally, the system considers the user's home country selection to provide tailored recommendations based on the existing immigrant population from that specific country in the chosen city.
+    Taking these insights into account, our recommendation system is designed to focus on the **38 major U.S. cities** that are commonly chosen by immigrants, rather than the hundreds of cities available. Additionally, the system considers the user's home country selection to provide tailored recommendations based on the existing **immigrant population** from that specific country in the chosen city.
     """)
     
      
