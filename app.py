@@ -29,16 +29,20 @@ def about_page():
     
     st.write(intro_paragraph)
     
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     st.subheader("The Most Important Factors for Immigrants:")
     st.markdown("""
     When it comes to making a life-changing decision like choosing a city to live in, there are several key factors that play a significant role for immigrants. Here are the most critical aspects that my city recommendation system considers:
-    - **Job Opportunities in the City**
-    - **Cost of Living**
-    - **Immigrant Community in the City**
-    - **Weather Year Round**
-    - **Safety Record**
-    - **Public Education Quality**      
+    - Job Opportunities in the City
+    - Cost of Living
+    - Immigrant Community in the City
+    - Weather Year Round
+    - Safety Record
+    - Public Education Quality      
     """)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
     
     st.subheader("Data Sources:")
     st.write("To create a robust and comprehensive recommendation system, we gathered data from reputable sources to compile a comprehensive data repository. The following are the primary data sources we used:")
@@ -51,21 +55,34 @@ def about_page():
     - [Countries of Origin for Immigrants - World Population Review](https://worldpopulationreview.com/country-rankings/us-immigration-by-country)
     """)
     
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     st.subheader("Building the Recommendation System:")
     st.markdown ("""
     The following were the steps followed to make the Recommendation System:
     1. **Data Collection:** Gathered data from reliable sources mentioned above and preprocessed it, ensuring it is properly formatted for analysis.
-    2. **Text Processing:** Perform Part-of-Speech (POS) Tagging and Lemmatization on profession data to create relevant tags for each city. To improve searchability, we use the "fasttext-wiki-news-subwords-300" model to find the top 5 similar words for each tag.
+    2. **Text Processing: Perform Part-of-Speech (POS) Tagging and Lemmatization** on profession data to create relevant tags for each city. To improve searchability, we use the **fasttext-wiki-news-subwords-300** model to find the top 5 similar words for each tag.
     3. **User Input Processing:** User inputs are carefully processed to maintain consistent formatting during the matching process.
-    4. **Similarity Calculation:** Used Jaccard Similarity method to calculate similarity scores between cities and user preferences, helping identify the best matches.
+    4. **Similarity Calculation:** Used **Jaccard Similarity** method to calculate similarity scores between cities and user preferences, helping identify the best matches.
     5. **Recommendation Generation:** Based on the similarity scores and user preferences, the system filters and sorts the data to provide personalized city recommendations.
     6. **Web App Development:** The recommendation engine is hosted on a web app built using Streamlit, offering an intuitive and user-friendly interface for users to explore city options.
     
     Here's the link to the code and the data files used, [GitHub](https://github.com/chiragsaraogi15/City-Recommendations-for-Immigrants)
     """)
     
+    st.markdown("<br>", unsafe_allow_html=True)
     
+    st.subheader("Why only Immigrants:")
+    
+    st.markdown("""
+    As we consider the factors that influence immigrant settlement patterns in the U.S., we find the following trends:
+    - Immigrants often prefer to live near their own communities when relocating to a new country.
+    - Approximately 74% of immigrants are concentrated in just six states: California, New York, Texas, Florida, New Jersey, and Illinois. In contrast, only 36% of native-born individuals reside in these states.
+    - Immigrant communities tend to gravitate toward areas with major international airports.
+    - Urban areas are popular choices for immigrant settlement.
 
+    Taking these insights into account, our recommendation system is designed to focus on the 38 major U.S. cities that are commonly chosen by immigrants, rather than the hundreds of cities available. Additionally, the system considers the user's home country selection to provide tailored recommendations based on the existing immigrant population from that specific country in the chosen city.
+    """)
     
      
 def get_pos_tag(token):
