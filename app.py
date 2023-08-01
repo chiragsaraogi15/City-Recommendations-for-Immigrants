@@ -20,8 +20,14 @@ def collect_feedback(feedback_text):
         st.success("Thank you for your feedback!")
 
 def about_page():
-    st.title("About: Making the Right Choice")
-    st.write("Hello, everyone! My name is Chirag Saraogi, an immigrant from India with around 10 years of experience living in the United States. Through interactions with hundreds of fellow immigrants, I realized the challenges immigrants face when deciding on the perfect city to call home. To address this issue, I have developed a sophisticated city recommendation system that takes into account several essential factors that are crucial for immigrants when choosing a city to settle in and build their future.")
+    st.title("About: CitySeeker")
+    
+    intro_paragraph = (
+    "Hello, everyone! I'm Chirag Saraogi, an immigrant from India with a decade of experience living in the United States. Having interacted with numerous fellow immigrants, I understand the challenges we face when searching for the perfect city to call home. "
+    "To address this, I've developed CitySeeker, a sophisticated city recommendation system tailored to the needs of immigrants. It factors in essential considerations to help you find the ideal city for building your future.\n"
+    )
+    
+    st.write(intro_paragraph)
     
     st.subheader("The Most Important Factors for Immigrants:")
     st.markdown("""
@@ -34,7 +40,7 @@ def about_page():
     - **Public Education Quality**      
     """)
     
-    st.subheader("Data Sources and Comprehensive Data Repository:")
+    st.subheader("Data Sources:")
     st.write("To create a robust and comprehensive recommendation system, we gathered data from reputable sources to compile a comprehensive data repository. The following are the primary data sources we used:")
 
     st.markdown("""
@@ -44,7 +50,24 @@ def about_page():
     - [Job Opportunities in the City - Bureau of Labor Statistics](https://www.bls.gov/oes/current/oessrcma.htm)
     - [Countries of Origin for Immigrants - World Population Review](https://worldpopulationreview.com/country-rankings/us-immigration-by-country)
     """)
+    
+    st.subheader("Building the Recommendation System:")
+    st.markdown ("""
+    The following were the steps followed to make the Recommendation System:
+    1. **Data Collection:** Gathered data from reliable sources mentioned above and preprocessed it, ensuring it is properly formatted for analysis.
+    2. **Text Processing:** Perform Part-of-Speech (POS) Tagging and Lemmatization on profession data to create relevant tags for each city. To improve searchability, we use the "fasttext-wiki-news-subwords-300" model to find the top 5 similar words for each tag.
+    3. **User Input Processing:** User inputs are carefully processed to maintain consistent formatting during the matching process.
+    4. **Similarity Calculation:** Used Jaccard Similarity method to calculate similarity scores between cities and user preferences, helping identify the best matches.
+    5. **Recommendation Generation:** Based on the similarity scores and user preferences, the system filters and sorts the data to provide personalized city recommendations.
+    6. **Web App Development:** The recommendation engine is hosted on a web app built using Streamlit, offering an intuitive and user-friendly interface for users to explore city options.
+    
+    Here's the link to the code and the data files used, [GitHub](https://github.com/chiragsaraogi15/City-Recommendations-for-Immigrants)
+    """)
+    
+    
 
+    
+     
 def get_pos_tag(token):
     pos_tag = nltk.pos_tag([token])[0][1]
     return pos_tag
@@ -167,7 +190,7 @@ def main():
         st.title("CitySeeker: Helping Immigrants find their Perfect City")
 
         intro_paragraph = (
-            "Welcome to CitySeeker! The USA, a dream country for immigrants worldwide, offers endless opportunities and incredible cities to explore. We understand that choosing the right city can be both exciting and overwhelming."
+            "Welcome to CitySeeker! The USA, a dream country for immigrants worldwide, offers endless opportunities and incredible cities to explore. We understand that choosing the right city can be both exciting and overwhelming. "
             "Whether you're reuniting with family, seeking better opportunities, or pursuing your dream career, we're here to help you find the ideal place to call home.\n"
         )
         st.write(intro_paragraph)
@@ -178,7 +201,7 @@ def main():
 
         st.write(long_paragraph2)
 
-        st.markdown("Discover your ideal city with our advanced recommendation system. Answer four simple questions, and we'll provide personalized city suggestions tailored to your preferences. Let's get started!")
+        st.markdown("Discover your ideal city with our advanced recommendation system. Answer four simple questions, and we'll provide personalized city suggestions tailored to your preferences. So let's get started!")
         
         st.markdown("<br>", unsafe_allow_html=True)
 
