@@ -466,13 +466,12 @@ def main():
                 }
 
                 .card-left {
-                    flex: 3;
+                    flex: 1;
                 }
 
                 .card-right {
                     flex: 1;
                     display: flex;
-                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
                 }
@@ -481,6 +480,7 @@ def main():
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+                    flex: 3; /* Adjust this value to control the spacing */
                     margin-right: 1rem; /* Add some margin between the content and the image */
                 }
 
