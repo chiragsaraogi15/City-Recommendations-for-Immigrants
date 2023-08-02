@@ -476,6 +476,14 @@ def main():
                     justify-content: center;
                 }
 
+                .card-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    flex: 3; /* Adjust this value to control the spacing */
+                    margin-right: 1rem; /* Add some margin between the content and the image */
+                }
+
                 .card-img-container {
                     width: 180px;
                     height: 180px;
@@ -483,8 +491,8 @@ def main():
                 }
 
                 .card-img {
-                    width: 90%;
-                    height: 90%;
+                    width: 100%;
+                    height: 100%;
                     object-fit: cover;
                     border: 1px solid black;
                 }
@@ -627,7 +635,8 @@ def main():
                 
                 message = """
                 <font size="4"><b>Note:</b> Recommendations provided above are cities that matched your preferences.\n</font>
-                <font size="4">Below are other top cities occupied by immigrants from your home country.</font>
+                <font size="4">To get more cities matching your preferences, please try again by being more specific about your profession and changing weather preferences.\n</font>
+                <font size="4">Also, below are other top cities occupied by immigrants from your home country.</font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
@@ -639,7 +648,68 @@ def main():
                 
                 cards_printed = 0
                 
-                st.write(card_style, unsafe_allow_html=True)
+                # CSS style for the cards
+                card_style_2 = """
+                <style>
+                .card {
+                    display: flex;
+                    padding: 1rem;
+                    margin: 1rem;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    background-color: #f9f9f9;
+                }
+
+                .card-left {
+                    flex: 1;
+                }
+
+                .card-right {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .card-content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    flex: 3; /* Adjust this value to control the spacing */
+                    margin-right: 1rem; /* Add some margin between the content and the image */
+                }
+
+                .card-img-container {
+                    width: 180px;
+                    height: 180px;
+                    overflow: hidden;
+                }
+
+                .card-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border: 1px solid black;
+                }
+
+                @media screen and (max-width: 768px) {
+                    /* Mobile layout */
+                    .card {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .card-left, .card-right {
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .card-right {
+                        margin-top: 1rem;
+                    }
+                }
+                </style>
+                """
+                
+                st.write(card_style_2, unsafe_allow_html=True)
                 
                 # Display each row as a card with city number and image
                 for idx, (index, row) in enumerate(recommendations_df_2.iterrows(), 1):
