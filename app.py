@@ -443,9 +443,9 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 message = """
-                <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could <b>not find<b> any cities matching your preferences.</font>
-                <font size="4">Please try again by being more <b>specific about your profession<b> and <b>changing weather preferences<b>.\n</font>
-                <font size="4">Also, below are the <b>top 5 cities occupied by immigrants from your home country<b>.</i></font>
+                <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could <b>not find</b> any cities matching your preferences.</font>
+                <font size="4">Please try again by being more <b>specific about your profession</b> and <b>changing weather preferences</b>.\n</font>
+                <font size="4">Also, below are the <b>top 5 cities occupied by immigrants from your home country</b>.</i></font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
@@ -466,12 +466,13 @@ def main():
                 }
 
                 .card-left {
-                    flex: 1;
+                    flex: 3;
                 }
 
                 .card-right {
                     flex: 1;
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
                 }
@@ -480,7 +481,6 @@ def main():
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    flex: 3; /* Adjust this value to control the spacing */
                     margin-right: 1rem; /* Add some margin between the content and the image */
                 }
 
