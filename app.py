@@ -438,7 +438,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 
-            elif len_df = 0:
+            elif len_df == 0:
             
                 st.markdown("<br>", unsafe_allow_html=True)
                 
