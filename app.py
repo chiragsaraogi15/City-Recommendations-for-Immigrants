@@ -443,9 +443,9 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 message = """
-                <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could not find any cities matching your preferences.</font>
-                <font size="4">Please try again by being more specific about your profession and changing weather preferences.\n</font>
-                <font size="4">Also, below are the top 5 cities occupied by immigrants from your home country.</i></font>
+                <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could <b>not find<b> any cities matching your preferences.</font>
+                <font size="4">Please try again by being more <b>specific about your profession<b> and <b>changing weather preferences<b>.\n</font>
+                <font size="4">Also, below are the <b>top 5 cities occupied by immigrants from your home country<b>.</i></font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
