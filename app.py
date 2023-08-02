@@ -342,7 +342,7 @@ def main():
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Top Recommendations for your preferences:")
+                st.subheader("Top Recommendations for your Preferences")
                 
                 # CSS style for the cards
                 card_style = """
@@ -430,8 +430,8 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
             
                 message = """
-                <font size="4"><i><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</i></font>
-                <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
+                <font size="4"><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</font>
+                <font size="4">Cities have been ranked based on these factors and in the same order mentioned above.</font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
@@ -443,15 +443,15 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 message = """
-                <font size="4"><i><b>Note:</b> Based on your selections above, the recommendation system could not find any cities matching your preferences.</i></font>
-                <font size="4"><i>Please try again by being more specific about your profession and changing weather preferences.</i></font>
-                <font size="4"><i>Also, below are the top 5 cities occupied by immigrants from your home country.</i></font>
+                <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could not find any cities matching your preferences.</font>
+                <font size="4">Please try again by being more specific about your profession and changing weather preferences.\n</font>
+                <font size="4">Also, below are the top 5 cities occupied by immigrants from your home country.</i></font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Popular cities")
+                st.subheader("Popular Cities")
                 
                 # CSS style for the cards
                 card_style = """
@@ -537,7 +537,7 @@ def main():
             else:  
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Top Recommendations for your preferences:")
+                st.subheader("Top Recommendations for your Preferences")
                 
                 # CSS style for the cards
                 card_style = """
@@ -626,14 +626,14 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 message = """
-                <font size="4"><i><b>Note:</b> Recommendations provided above are cities that matched your preferences</i></font>
-                <font size="4"><i>Below are other top cities occupied by immigrants from your home country.</i></font>
+                <font size="4"><b>Note:</b> Recommendations provided above are cities that matched your preferences.\n</font>
+                <font size="4">Below are other top cities occupied by immigrants from your home country.</font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Other cities")
+                st.subheader("Other Popular Cities")
                 
                 existing_indexes = set(recommendations_df.index)
                 
