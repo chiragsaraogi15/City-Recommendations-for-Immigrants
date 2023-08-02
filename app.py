@@ -117,9 +117,9 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 
     selected_columns = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
                         'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK']
-
+                    
     filtered_df = df[selected_columns]
-
+      
     filtered_df = filtered_df[
         (filtered_df['WINTER_COLDEST_TEMP'] >= coldest_temp) &
         (filtered_df['SUMMER_HOTTEST_TEMP'] <= hottest_temp)
@@ -151,7 +151,22 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 
     desired_columns = ['STATE_x','PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP','BEST_SUBURBS','IMAGE_LINK']
     filtered_df = filtered_df[desired_columns]
+    
     return filtered_df
+
+def final_recommendations_2(choice):   
+    
+    df_2 = pd.read_pickle('tagged_data.pkl')
+
+    selected_columns_2 = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
+                    'SUMMER_HOTTEST_TEMP',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK']
+                    
+    filtered_df_2 = df_2[selected_columns_2]
+    
+    filtered_df_2 = filtered_df_2.drop_duplicates()
+    filtered_df_2 = filtered_df_2.sort_values(by = [choice, 'COST_OF_LIVING_INDEX', 'SAFETY_INDEX'], ascending = [False, True, False])
+    
+    return filtered_df_2
 
 
 # Your remaining code for the recommendations model
@@ -224,7 +239,7 @@ def main():
 
         # Step 1: Take input for user's profession name
         st.markdown("<h4 style='margin: 0;'>What kind of work do you do?</h4>", unsafe_allow_html=True)
-        st.write("For example: Software Engineer, Doctor, Teacher, etc.")
+        st.write("Please be specific for better results. For example: Software Engineer, Doctor, Teacher, etc.")
         user_profession = st.text_input("")
 
 
@@ -289,8 +304,10 @@ def main():
 
 
         if st.button("Submit"):
+            
             recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
-           
+            recommendations_df_2 = final_recommendations_2(choice)
+            
             column_mapping = {
                'CITY': 'City',
                'PROFESSION': 'Profession',
@@ -304,20 +321,28 @@ def main():
                'IMAGE_LINK': 'Image Link'
             }
             
+            column_mapping_2 = {
+               'CITY': 'City',
+               choice: 'Immigrant Count',
+               'WINTER_COLDEST_TEMP': 'Coldest Temperature in Winters',
+               'SUMMER_HOTTEST_TEMP': 'Hottest Temperature in Summers',
+               'STATE_x': 'State',
+               'BEST_SUBURBS': 'Best Suburbs',
+               'IMAGE_LINK': 'Image Link'
+            }
+            
            
             recommendations_df = recommendations_df.rename(columns=column_mapping)
+            recommendations_df_2 = recommendations_df_2.rename(columns=column_mapping_2)
             
-            if recommendations_df.empty:
-                message = """
-                <h2 style='color: #FF5733; text-align: center;'>Oops! 🙁</h2>
-                <p style='text-align: center;'>We currently don't have enough data to provide recommendations based on your preferences.</p>
-                <p style='text-align: center;'>Please try changing your preferences to get better results. We truly apologize for the inconvenience.</p>
-                """
-                st.markdown(message, unsafe_allow_html=True)
-            else:
+            len_df = len(recommendations_df)
+            len_df_2 = 5-len_df
+            
+            if len_df >= 5:
+                
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Top Recommendations:")
+                st.subheader("Top Recommendations for your preferences:")
                 
                 # CSS style for the cards
                 card_style = """
@@ -403,7 +428,7 @@ def main():
                     st.write(city_card_html, unsafe_allow_html=True)
                     
                 st.markdown("<br>", unsafe_allow_html=True)
-
+            
                 message = """
                 <font size="4"><i><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</i></font>
                 <font size="4"><i>Cities have been ranked based on these factors and in the same order mentioned above.</i></font>
@@ -412,10 +437,248 @@ def main():
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-                st.subheader("Feedback")
-                feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
-                if st.button("Submit Feedback"):
-                    collect_feedback(feedback_text)
+                
+            elif len_df = 0:
+            
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                message = """
+                <font size="4"><i><b>Note:</b> Based on your selections above, the recommendation system could not find any cities matching your preferences.</i></font>
+                <font size="4"><i>Please try again by being more specific about your profession and changing weather preferences.</i></font>
+                <font size="4"><i>Also, below are the top 5 cities occupied by immigrants from your home country.</i></font>
+                """
+                st.markdown(message, unsafe_allow_html=True)
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.subheader("Popular cities")
+                
+                # CSS style for the cards
+                card_style = """
+                <style>
+                .card {
+                    display: flex;
+                    padding: 1rem;
+                    margin: 1rem;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    background-color: #f9f9f9;
+                }
+
+                .card-left {
+                    flex: 1;
+                }
+
+                .card-right {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .card-img-container {
+                    width: 180px;
+                    height: 180px;
+                    overflow: hidden;
+                }
+
+                .card-img {
+                    width: 90%;
+                    height: 90%;
+                    object-fit: cover;
+                    border: 1px solid black;
+                }
+
+                @media screen and (max-width: 768px) {
+                    /* Mobile layout */
+                    .card {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .card-left, .card-right {
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .card-right {
+                        margin-top: 1rem;
+                    }
+                }
+                </style>
+                """
+
+                st.write(card_style, unsafe_allow_html=True)
+
+                # Display each row as a card with city number and image
+                for idx, (index, row) in enumerate(recommendations_df_2.head(5).iterrows(), 1):
+                    immigrant_count = f'{row["Immigrant Count"]:,}'
+                    coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+                    hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
+
+                    best_suburbs_value = row["Best Suburbs"]
+                    best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
+                    image_link = row["Image Link"]
+                    image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+
+                    city_card_html = (
+                        f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
+                        f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
+                        f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+                        f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
+                        f'<p>{best_suburbs_link}</p></div>'
+                        f'<div class="card-right">{image_html}</div></div>'
+                    )
+
+                    st.write(city_card_html, unsafe_allow_html=True)
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                
+            else  
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.subheader("Top Recommendations for your preferences:")
+                
+                # CSS style for the cards
+                card_style = """
+                <style>
+                .card {
+                    display: flex;
+                    padding: 1rem;
+                    margin: 1rem;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    background-color: #f9f9f9;
+                }
+
+                .card-left {
+                    flex: 1;
+                }
+
+                .card-right {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .card-img-container {
+                    width: 180px;
+                    height: 180px;
+                    overflow: hidden;
+                }
+
+                .card-img {
+                    width: 90%;
+                    height: 90%;
+                    object-fit: cover;
+                    border: 1px solid black;
+                }
+
+                @media screen and (max-width: 768px) {
+                    /* Mobile layout */
+                    .card {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .card-left, .card-right {
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .card-right {
+                        margin-top: 1rem;
+                    }
+                }
+                </style>
+                """
+
+                st.write(card_style, unsafe_allow_html=True)
+
+                # Display each row as a card with city number and image
+                for idx, (index, row) in enumerate(recommendations_df.head(len_df).iterrows(), 1):
+                    employment_count = f'{row["Employment Count"]:,}'
+                    average_salary = f'${row["Average Annual Salary"]:,.0f}' if row["Average Annual Salary"] > 0 else "Not Available"
+                    immigrant_count = f'{row["Immigrant Count"]:,}'
+                    coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+                    hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
+
+                    best_suburbs_value = row["Best Suburbs"]
+                    best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
+                    image_link = row["Image Link"]
+                    image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+
+                    city_card_html = (
+                        f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
+                        f'<p><strong>Profession:</strong> {row["Profession"]}</p>'
+                        f'<p><strong>Employment Count:</strong> {employment_count}</p>'
+                        f'<p><strong>Average Annual Salary:</strong> {average_salary}</p>'
+                        f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
+                        f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+                        f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
+                        f'<p>{best_suburbs_link}</p></div>'
+                        f'<div class="card-right">{image_html}</div></div>'
+                    )
+
+                    st.write(city_card_html, unsafe_allow_html=True)
+                    
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                message = """
+                <font size="4"><i><b>Note:</b> Recommendations provided above are cities that matched your preferences</i></font>
+                <font size="4"><i>Below are other top cities occupied by immigrants from your home country.</i></font>
+                """
+                st.markdown(message, unsafe_allow_html=True)
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                st.subheader("Other cities")
+                
+                existing_indexes = set(recommendations_df.index)
+                
+                cards_printed = 0
+                
+                st.write(card_style, unsafe_allow_html=True)
+                
+                # Display each row as a card with city number and image
+                for idx, (index, row) in enumerate(recommendations_df_2.iterrows(), 1):
+                    # Check if the index is not present in recommendations_df
+                    if index not in existing_indexes:
+                        immigrant_count = f'{row["Immigrant Count"]:,}'
+                        coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
+                        hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
+
+                        best_suburbs_value = row["Best Suburbs"]
+                        best_suburbs_link = f'<a href="{best_suburbs_value}" target="_blank">Click for best suburbs of the city</a>'
+
+                        image_link = row["Image Link"]
+                        image_html = f'<img class="card-img" src="{image_link}" alt="{index} Image">'
+
+                        city_card_html = (
+                            f'<div class="card"><div class="card-left"><h2>{idx}. {index}</h2>'
+                            f'<p><strong>Home Country Immigrant Count:</strong> {immigrant_count}</p>'
+                            f'<p><strong>Coldest Temperature in Winters:</strong> {coldest_temp_winter}°F</p>'
+                            f'<p><strong>Hottest Temperature in Summers:</strong> {hottest_temp_summer}°F</p>'
+                            f'<p>{best_suburbs_link}</p></div>'
+                            f'<div class="card-right">{image_html}</div></div>'
+                        )
+
+                        st.write(city_card_html, unsafe_allow_html=True)
+
+                        # Increment the counter for the number of cards printed
+                        cards_printed += 1
+
+                        # Check if we have printed enough cards (reached len_df_2)
+                        if cards_printed >= len_df_2:
+                            break
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+            st.subheader("Feedback")
+            feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
+            if st.button("Submit Feedback"):
+                collect_feedback(feedback_text)
     
     elif page == "About":
         about_page()
