@@ -534,7 +534,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
 
                 
-            else  
+            else:  
                 st.markdown("<br>", unsafe_allow_html=True)
                 
                 st.subheader("Top Recommendations for your preferences:")
