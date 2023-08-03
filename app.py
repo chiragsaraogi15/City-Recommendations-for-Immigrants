@@ -451,7 +451,7 @@ def main():
                 
                 message = """
                 <font size="4"><b>Note:</b> Based on your selections above, the recommendation system could <b>not find</b> any cities matching your preferences.</font>
-                <font size="4">Please try again by being more <b>specific about your profession</b> and <b>changing weather preferences</b>.\n</font>
+                <font size="4">Please try again by being more <b>specific about your profession</b> and <b>selecting other weather options</b>. </font>
                 <font size="4">Also, below are the <b>top 5 cities occupied by immigrants from your home country</b>.</i></font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
@@ -642,7 +642,7 @@ def main():
                 
                 message = """
                 <font size="4"><b>Note:</b> Recommendations provided above are cities that matched your preferences.\n</font>
-                <font size="4">To get more cities matching your preferences, please try again by being more specific about your profession and changing weather preferences.\n</font>
+                <font size="4">To get more cities matching your preferences, please try again by being more specific about your profession and selecting other weather options. </font>
                 <font size="4">Also, below are other top cities occupied by immigrants from your home country.</font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
