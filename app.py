@@ -148,9 +148,15 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
 
     filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
                                           ascending=[False, False, True, False, False])
+                                          
+    max_top_cities = 2
+    grouped_df = filtered_df.groupby('STATE_x').head(max_top_cities)
+    mask = filtered_df.reset_index().groupby('STATE_x').cumcount() >= max_top_cities
+    filtered_df = filtered_df.loc[~mask]
 
     desired_columns = ['STATE_x','PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP','BEST_SUBURBS','IMAGE_LINK']
     filtered_df = filtered_df[desired_columns]
+    
     
     return filtered_df
 
