@@ -753,7 +753,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
             
-            feedback_col, _ = st.beta_columns([4, 1])
+            feedback_col, _ = st.columns([4, 1])
             with feedback_col:
                 st.write("Was this helpful for you?")
                 
