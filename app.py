@@ -309,25 +309,7 @@ def main():
         index_choice = st.selectbox("", range(len(countries_choices)), format_func=lambda i: countries_choices[i])
         choice = countries[index_choice - 1]
         
-        if 'feedback_state' not in st.session_state:
-            st.session_state.feedback_state = {
-                'thumbs_up': False,
-                'thumbs_down': False,
-                'feedback_text': '',
-                'user_inputs': None
-            }
-    
-        if st.session_state.feedback_state['thumbs_up']:
-            st.write("Thank you for your feedback! We're glad it was helpful.")
-        elif st.session_state.feedback_state['thumbs_down']:
-            st.write("We're sorry that this wasn't helpful. Please provide us with feedback on how we can improve.")
-            feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000, value=st.session_state.feedback_state['feedback_text'])
-            if st.button("Submit Feedback"):
-                collect_feedback(feedback_text)
-                # Reset the feedback state
-                st.session_state.feedback_state['feedback_text'] = ''
-                st.session_state.feedback_state['thumbs_up'] = False
-                st.session_state.feedback_state['thumbs_down'] = False
+       
 
         if st.button("Submit"):
             
@@ -772,30 +754,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
             
-            feedback_col, _ = st.columns([4, 1])
-            with feedback_col:
-                st.write("Was this helpful for you?")
-                
-                thumbs_up = st.button("👍 Thumbs Up")
-                thumbs_down = st.button("👎 Thumbs Down")
-
-                if thumbs_up:
-                    st.session_state.feedback_state['thumbs_up'] = True
-                    st.session_state.feedback_state['thumbs_down'] = False
-                elif thumbs_down:
-                    st.session_state.feedback_state['thumbs_up'] = False
-                    st.session_state.feedback_state['thumbs_down'] = True
-                else:
-                    st.session_state.feedback_state['thumbs_up'] = False
-                    st.session_state.feedback_state['thumbs_down'] = False
-                
-                st.session_state.feedback_state['feedback_text'] = st.text_area("Please share your feedback with us:", max_chars=1000, value=st.session_state.feedback_state['feedback_text'])
-                
-                if st.button("Submit Feedback"):
-                    collect_feedback(st.session_state.feedback_state['feedback_text'])
-                    st.session_state.feedback_state['feedback_text'] = ''
-                    st.session_state.feedback_state['thumbs_up'] = False
-                    st.session_state.feedback_state['thumbs_down'] = False
+            
     
     elif page == "About":
         about_page()
