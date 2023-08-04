@@ -310,12 +310,12 @@ def main():
         choice = countries[index_choice - 1]
         
         if 'feedback_state' not in st.session_state:
-        st.session_state.feedback_state = {
-            'thumbs_up': False,
-            'thumbs_down': False,
-            'feedback_text': '',
-            'user_inputs': None
-        }
+            st.session_state.feedback_state = {
+                'thumbs_up': False,
+                'thumbs_down': False,
+                'feedback_text': '',
+                'user_inputs': None
+            }
     
         if st.session_state.feedback_state['thumbs_up']:
             st.write("Thank you for your feedback! We're glad it was helpful.")
