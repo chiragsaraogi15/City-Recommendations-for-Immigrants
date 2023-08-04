@@ -752,10 +752,25 @@ def main():
                     
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-            st.subheader("Feedback")
-            feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
-            if st.button("Submit Feedback"):
-                collect_feedback(feedback_text)
+            
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            st.write("Was this helpful for you?")
+    
+            thumbs_up = st.button("👍 Thumbs Up")
+            
+            thumbs_down = st.button("👎 Thumbs Down")
+            
+            if thumbs_up:
+                st.write("Thank you for your feedback! We're glad it was helpful.")
+                
+            elif thumbs_down:
+                st.write("We're sorry that this wasn't helpful. Please provide us with feedback on how we can improve.")
+
+                feedback_text = st.text_area("Please share your feedback with us:", max_chars=1000)
+                
+                if st.button("Submit Feedback"):
+                    collect_feedback(feedback_text)
     
     elif page == "About":
         about_page()
