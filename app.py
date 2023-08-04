@@ -343,9 +343,9 @@ def main():
             recommendations_df_2 = recommendations_df_2.rename(columns=column_mapping_2)
             
             len_df = len(recommendations_df)
-            len_df_2 = 5-len_df
+            len_df_2 = 10-len_df
             
-            if len_df >= 5:
+            if len_df >= 10:
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
@@ -407,7 +407,7 @@ def main():
                 st.write(card_style, unsafe_allow_html=True)
 
                 # Display each row as a card with city number and image
-                for idx, (index, row) in enumerate(recommendations_df.head(5).iterrows(), 1):
+                for idx, (index, row) in enumerate(recommendations_df.head(10).iterrows(), 1):
                     employment_count = f'{row["Employment Count"]:,}'
                     average_salary = f'${row["Average Annual Salary"]:,.0f}' if row["Average Annual Salary"] > 0 else "Not Available"
                     immigrant_count = f'{row["Immigrant Count"]:,}'
@@ -524,7 +524,7 @@ def main():
                 st.write(card_style, unsafe_allow_html=True)
 
                 # Display each row as a card with city number and image
-                for idx, (index, row) in enumerate(recommendations_df_2.head(5).iterrows(), 1):
+                for idx, (index, row) in enumerate(recommendations_df_2.head(10).iterrows(), 1):
                     immigrant_count = f'{row["Immigrant Count"]:,}'
                     coldest_temp_winter = f'{round(row["Coldest Temperature in Winters"]):,}'  # Round and remove decimals
                     hottest_temp_summer = f'{round(row["Hottest Temperature in Summers"]):,}'  # Round and remove decimals
