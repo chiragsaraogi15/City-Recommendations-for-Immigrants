@@ -322,7 +322,10 @@ def main():
             st.session_state.submitted = False
         if 'feedback_given' not in st.session_state:
             st.session_state.feedback_given = False
-        
+        if 'feedback_type' not in st.session_state:
+            st.session_state.feedback_type = None
+            
+            
         submitted = st.button("Submit")
         
         if submitted:
@@ -772,8 +775,8 @@ def main():
                     
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-            thumbs_up = st.button("👍 Thumbs Up")
-            thumbs_down = st.button("👎 Thumbs Down")
+            thumbs_up = st.button("👍 Recommendations Helpful")
+            thumbs_down = st.button("👎 Recommendations Not Helpful")
             
             if thumbs_up:
                 st.session_state.feedback_given = True
@@ -785,10 +788,15 @@ def main():
       
         if st.session_state.feedback_given:
             if st.session_state.feedback_type == "thumbs_up":
-                st.write('We are glad you liked the recommendations')
+                st.write('<p style="font-size: 24px; color: green;">Wohoo!! We are glad you liked the recommendations 🎉</p>', unsafe_allow_html=True)
             elif st.session_state.feedback_type == "thumbs_down":
-                st.write('Thank you for letting us know, we will continue to improve')
-    
+                st.write('<p style="font-size: 24px; color: green;">We regret that the recommendations did not meet your expectations.</p>', unsafe_allow_html=True)
+
+            st.write('<p style="font-size: 24px; color: green;">Please provide any feedback below to help us improve.</p>', unsafe_allow_html=True)
+            feedback_text = st.text_area("Enter your feedback here:")
+            if feedback_text:
+                st.write("Feedback:", feedback_text)
+                
     elif page == "About":
         about_page()
         
