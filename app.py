@@ -181,17 +181,19 @@ def final_recommendations_2(choice):
 # Your remaining code for the recommendations model
 stop_words = set(stopwords.words('english'))
 
-if 'feedback_given' not in st.session_state:
-    st.session_state.feedback_given = False
-if 'thumbs_up' not in st.session_state:
-    st.session_state.thumbs_up = None
-if 'thumbs_down' not in st.session_state:
-    st.session_state.thumbs_down = None
-if 'feedback_text' not in st.session_state:
-    st.session_state.feedback_text = ""
+
 
 
 def main():
+    
+    if 'feedback_given' not in st.session_state:
+        st.session_state.feedback_given = False
+    if 'thumbs_up' not in st.session_state:
+        st.session_state.thumbs_up = None
+    if 'thumbs_down' not in st.session_state:
+        st.session_state.thumbs_down = None
+    if 'feedback_text' not in st.session_state:
+        st.session_state.feedback_text = ""
     
     st.markdown(
         """
