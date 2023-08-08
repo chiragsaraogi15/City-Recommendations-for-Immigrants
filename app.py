@@ -765,11 +765,13 @@ def main():
         
             thumbs_up = st.button("👍 Thumbs Up")
             thumbs_down = st.button("👎 Thumbs Down")
-
+            
+            feedback_message = st.empty()
+            
             if thumbs_up:
-                st.write('We are glad you liked the recommendations')
+                feedback_message.write('We are glad you liked the recommendations')
             elif thumbs_down:
-                st.write('Thank you for letting us know, we will continue to improve')   
+                feedback_message.write('Thank you for letting us know, we will continue to improve')
     
     
     elif page == "About":
