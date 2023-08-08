@@ -462,6 +462,30 @@ def main():
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 
+                # Display feedback buttons and text area
+                thumbs_up = st.button("👍 Thumbs Up")
+                thumbs_down = st.button("👎 Thumbs Down")
+
+                if thumbs_up:
+                    st.session_state.thumbs_up = True
+                    st.session_state.thumbs_down = False
+                    st.session_state.feedback_given = True
+                    
+                elif thumbs_down:
+                    st.session_state.thumbs_up = False
+                    st.session_state.thumbs_down = True
+                    st.session_state.feedback_given = True
+
+                st.write("We'd love to hear more about your experience!")
+                feedback_text = st.text_area("Enter your feedback (up to 500 words)", value=st.session_state.feedback_text, max_chars=500)
+                st.session_state.feedback_text = feedback_text
+
+                if st.button("Submit Feedback"):
+                    # Process and save feedback, if needed
+                    st.write("Thank you for your feedback!")
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.write("Note: ...")  # Display the note message
                 
             elif len_df == 0:
             
@@ -771,35 +795,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
         
-            if st.session_state.feedback_given:
-                st.write("Thank you for your feedback!")
-                if st.session_state.thumbs_up:
-                    st.write("You liked the recommendation system!")
-                elif st.session_state.thumbs_down:
-                    st.write("We apologize for any inconvenience.")
-                    
-            else:
-                thumbs_up = st.button("👍 Thumbs Up")
-                thumbs_down = st.button("👎 Thumbs Down")
-
-                if thumbs_up:
-                    st.session_state.thumbs_up = True
-                    st.session_state.thumbs_down = False
-                    st.session_state.feedback_given = True
-                elif thumbs_down:
-                    st.session_state.thumbs_up = False
-                    st.session_state.thumbs_down = True
-                    st.session_state.feedback_given = True   
             
-
-            if st.session_state.feedback_given:
-                st.write("We'd love to hear more about your experience!")
-                feedback_text = st.text_area("Enter your feedback (up to 500 words)", value=st.session_state.feedback_text, max_chars=500)
-                st.session_state.feedback_text = feedback_text
-
-                if st.button("Submit Feedback"):
-                    # Process and save feedback, if needed
-                    st.write("Thank you for your feedback!")
     
     
     elif page == "About":
