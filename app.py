@@ -767,24 +767,24 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
                 
         
-        if st.session_state.feedback_given:
-            if st.session_state.thumbs_up:
-                st.write("We're glad you liked the recommendations!")
-            elif st.session_state.thumbs_down:
-                st.write("We apologize for any inconvenience. We'll continue to improve.")
+            if st.session_state.feedback_given:
+                if st.session_state.thumbs_up:
+                    st.write("We're glad you liked the recommendations!")
+                elif st.session_state.thumbs_down:
+                    st.write("We apologize for any inconvenience. We'll continue to improve.")
 
-        else:
-            thumbs_up = st.button("👍 Thumbs Up")
-            thumbs_down = st.button("👎 Thumbs Down")
+            else:
+                thumbs_up = st.button("👍 Thumbs Up")
+                thumbs_down = st.button("👎 Thumbs Down")
 
-            if thumbs_up:
-                st.session_state.thumbs_up = True
-                st.session_state.thumbs_down = False
-                st.session_state.feedback_given = True
-            elif thumbs_down:
-                st.session_state.thumbs_up = False
-                st.session_state.thumbs_down = True
-                st.session_state.feedback_given = True    
+                if thumbs_up:
+                    st.session_state.thumbs_up = True
+                    st.session_state.thumbs_down = False
+                    st.session_state.feedback_given = True
+                elif thumbs_down:
+                    st.session_state.thumbs_up = False
+                    st.session_state.thumbs_down = True
+                    st.session_state.feedback_given = True    
     
     
     elif page == "About":
