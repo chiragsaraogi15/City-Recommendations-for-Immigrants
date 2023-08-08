@@ -318,15 +318,19 @@ def main():
         
        
         
-        submitted = False
-        thumbs_up = False
-        thumbs_down = False
+        if 'submitted' not in st.session_state:
+            st.session_state.submitted = False
+        if 'feedback_given' not in st.session_state:
+            st.session_state.feedback_given = False
         
         submitted = st.button("Submit")
         
         if submitted:
         
-            
+            st.session_state.submitted = True
+        
+        if st.session_state.submitted:
+        
             recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
             recommendations_df_2 = final_recommendations_2(choice)
             
@@ -770,11 +774,20 @@ def main():
                 
             thumbs_up = st.button("👍 Thumbs Up")
             thumbs_down = st.button("👎 Thumbs Down")
-        
-        if thumbs_up:
-            st.write('We are glad you liked the recommendations')
-        elif thumbs_down:
-            st.write('Thank you for letting us know, we will continue to improve')
+            
+            if thumbs_up:
+                st.session_state.feedback_given = True
+                st.session_state.feedback_type = "thumbs_up"
+            if thumbs_down:
+                st.session_state.feedback_given = True
+                st.session_state.feedback_type = "thumbs_down"
+
+      
+        if st.session_state.feedback_given:
+            if st.session_state.feedback_type == "thumbs_up":
+                st.write('We are glad you liked the recommendations')
+            elif st.session_state.feedback_type == "thumbs_down":
+                st.write('Thank you for letting us know, we will continue to improve')
     
     elif page == "About":
         about_page()
