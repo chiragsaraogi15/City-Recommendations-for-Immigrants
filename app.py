@@ -775,15 +775,19 @@ def main():
                     
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-            thumbs_up = st.button("👍 Recommendations Helpful")
-            thumbs_down = st.button("👎 Recommendations Not Helpful")
+            st.title("Feedback for Recommendations")
+            
+            thumbs_up = st.button("👍 Helpful")
+            thumbs_down = st.button("👎 Not Helpful")
             
             if thumbs_up:
                 st.session_state.feedback_given = True
                 st.session_state.feedback_type = "thumbs_up"
+                thumbs_down = False
             if thumbs_down:
                 st.session_state.feedback_given = True
                 st.session_state.feedback_type = "thumbs_down"
+                thumbs_up = False
 
       
         if st.session_state.feedback_given:
@@ -791,11 +795,6 @@ def main():
                 st.write('<p style="font-size: 24px; color: green;">Wohoo!! We are glad you liked the recommendations 🎉</p>', unsafe_allow_html=True)
             elif st.session_state.feedback_type == "thumbs_down":
                 st.write('<p style="font-size: 24px; color: green;">We regret that the recommendations did not meet your expectations.</p>', unsafe_allow_html=True)
-
-            st.write('<p style="font-size: 24px; color: green;">Please provide any feedback below to help us improve.</p>', unsafe_allow_html=True)
-            feedback_text = st.text_area("Enter your feedback here:")
-            if feedback_text:
-                st.write("Feedback:", feedback_text)
                 
     elif page == "About":
         about_page()
