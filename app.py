@@ -1,4 +1,5 @@
 import streamlit as st
+from recommendation_engine import final_recommendations, final_recommendations_2
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
@@ -6,7 +7,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import ast
 import re
-from recommendation_engine import final_recommendations, final_recommendations_2
+
 
 nltk.download('punkt')
 nltk.download('wordnet')
