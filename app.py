@@ -317,9 +317,15 @@ def main():
         choice = countries[index_choice - 1]
         
        
+        
+        submitted = False
+        thumbs_up = False
+        thumbs_down = False
+        
         submitted = st.button("Submit")
         
         if submitted:
+        
             
             recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
             recommendations_df_2 = final_recommendations_2(choice)
@@ -762,17 +768,13 @@ def main():
                     
                 st.markdown("<br>", unsafe_allow_html=True)
                 
-        
             thumbs_up = st.button("👍 Thumbs Up")
             thumbs_down = st.button("👎 Thumbs Down")
-            
-            feedback_message = st.empty()
-            
-            if thumbs_up:
-                feedback_message.write('We are glad you liked the recommendations')
-            elif thumbs_down:
-                feedback_message.write('Thank you for letting us know, we will continue to improve')
-    
+        
+        if thumbs_up:
+            st.write('We are glad you liked the recommendations')
+        elif thumbs_down:
+            st.write('Thank you for letting us know, we will continue to improve')
     
     elif page == "About":
         about_page()
