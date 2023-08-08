@@ -146,8 +146,8 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
                      .groupby('CITY').head(1) \
                      .sort_index()
 
-    filtered_df = filtered_df.sort_values(by=['TOT_EMP','DIFFERENT_STATE_MOVE_IN','A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
-                                          ascending=[True, True, True, False, True, True])
+    filtered_df = filtered_df.sort_values(by=['TOT_EMP','A_MEAN',choice,'DIFFERENT_STATE_MOVE_IN','COST_OF_LIVING_INDEX','SAFETY_INDEX'],
+                                          ascending=[True, True, True, True, False, True])
                                           
     max_top_cities = 2
     grouped_df = filtered_df.groupby('STATE_x').head(max_top_cities)
