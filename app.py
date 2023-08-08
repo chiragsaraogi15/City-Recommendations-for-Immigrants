@@ -146,8 +146,8 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
                      .groupby('CITY').head(1) \
                      .sort_index()
 
-    filtered_df = filtered_df.sort_values(by=['DIFFERENT_STATE_MOVE_IN','TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
-                                          ascending=[True, False, False, True, False, False])
+    filtered_df = filtered_df.sort_values(by=['TOT_EMP','DIFFERENT_STATE_MOVE_IN','A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
+                                          ascending=[True, True, True, False, True, True])
                                           
     max_top_cities = 2
     grouped_df = filtered_df.groupby('STATE_x').head(max_top_cities)
@@ -171,7 +171,7 @@ def final_recommendations_2(choice):
     filtered_df_2 = df_2[selected_columns_2]
     
     filtered_df_2 = filtered_df_2.drop_duplicates()
-    filtered_df_2 = filtered_df_2.sort_values(by = ['DIFFERENT_STATE_MOVE_IN',choice, 'COST_OF_LIVING_INDEX', 'SAFETY_INDEX'], ascending = [True, False, True, False])
+    filtered_df_2 = filtered_df_2.sort_values(by = [choice, 'DIFFERENT_STATE_MOVE_IN','COST_OF_LIVING_INDEX', 'SAFETY_INDEX'], ascending = [True, True, False, True])
     
     return filtered_df_2
 
