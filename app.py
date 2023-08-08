@@ -792,9 +792,9 @@ def main():
       
         if st.session_state.feedback_given:
             if st.session_state.feedback_type == "thumbs_up":
-                st.write('<p style="font-size: 24px; color: green;">Wohoo!! We are glad you liked the recommendations 🎉</p>', unsafe_allow_html=True)
+                st.write('<p style="font-size: 24px; color: black;">Wohoo!! We are glad you liked the recommendations 🎉</p>', unsafe_allow_html=True)
             elif st.session_state.feedback_type == "thumbs_down":
-                st.write('<p style="font-size: 24px; color: green;">We regret that the recommendations did not meet your expectations.</p>', unsafe_allow_html=True)
+                st.write('<p style="font-size: 24px; color: black;">We regret that the recommendations did not meet your expectations.</p>', unsafe_allow_html=True)
                 
     elif page == "About":
         about_page()
