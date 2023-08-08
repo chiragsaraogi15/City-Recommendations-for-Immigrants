@@ -317,8 +317,9 @@ def main():
         choice = countries[index_choice - 1]
         
        
-
-        if st.button("Submit"):
+        submitted = st.button("Submit")
+        
+        if submitted:
             
             recommendations_df = final_recommendations(user_profession, coldest_temp, hottest_temp, choice)
             recommendations_df_2 = final_recommendations_2(choice)
