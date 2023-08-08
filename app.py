@@ -34,12 +34,13 @@ def about_page():
     st.subheader("The Most Important Factors for Immigrants:")
     st.markdown("""
     When it comes to making a life-changing decision like choosing a city to live in, there are several key factors that play a significant role for immigrants. Here are the most critical aspects that my city recommendation system considers:
-    - Job Opportunities in the City
-    - Cost of Living
-    - Immigrant Community in the City
-    - Weather Year Round
-    - Safety Record
-    - Public Education Quality      
+    - Job opportunities in the city
+    - Cost of living
+    - Immigrant community in the city
+    - Domestic migration of people into the state each year
+    - Weather year round
+    - Safety record
+    - Public education quality      
     """)
     
     st.markdown("<br>", unsafe_allow_html=True)
@@ -53,6 +54,7 @@ def about_page():
     - [Weather Year Round - Infoplease](https://www.infoplease.com/math-science/weather/climate-of-100-selected-us-cities)
     - [Job Opportunities in the City - Bureau of Labor Statistics](https://www.bls.gov/oes/current/oessrcma.htm)
     - [Countries of Origin for Immigrants - World Population Review](https://worldpopulationreview.com/country-rankings/us-immigration-by-country)
+    - [State to State Domestic Migration by Year - U.S Census Bureau](https://www.census.gov/data/tables/time-series/demo/geographic-mobility/state-to-state-migration.html)
     """)
     
     st.markdown("<br>", unsafe_allow_html=True)
@@ -66,7 +68,7 @@ def about_page():
     4. **Similarity Calculation:** Used **Jaccard Similarity** method to calculate similarity scores between cities and user preferences, helping identify the best matches.
     5. **Recommendation Generation:** Based on the similarity scores and user preferences, the system filters and sorts the data to provide personalized city recommendations.
     6. **Web App Development:** The recommendation engine is hosted on a web app built using Streamlit, offering an intuitive and user-friendly interface for users to explore city options.
-    
+  
     Here's the link to the code and the data files used, [GitHub](https://github.com/chiragsaraogi15/City-Recommendations-for-Immigrants)
     """)
     
@@ -155,7 +157,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
     filtered_df = filtered_df.loc[mask]
     
     
-    desired_columns = ['STATE_x','PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP','BEST_SUBURBS','IMAGE_LINK']
+    desired_columns = ['STATE_x','PROFESSION', 'TOT_EMP', 'A_MEAN', choice, 'WINTER_COLDEST_TEMP', 'SUMMER_HOTTEST_TEMP','BEST_SUBURBS','IMAGE_LINK','DIFFERENT_STATE_MOVE_IN']
     filtered_df = filtered_df[desired_columns]
     
     
@@ -438,7 +440,7 @@ def main():
                 st.markdown("<br>", unsafe_allow_html=True)
             
                 message = """
-                <font size="4"><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>cost of living</b>, <b>immigrant count</b> from your home country, and <b>safety index</b> in the city.</font>
+                <font size="4"><b>Note:</b> this recommendation system takes into account factors like <b>job availabilities</b> for your profession, <b>average annual salary</b>, <b>immigrant count</b> from your home country, <b>domestic migration</b> into the state, <b>cost of living</b> and <b>safety index</b> in the city.</font>
                 <font size="4">Cities have been ranked based on these factors and in the same order mentioned above.</font>
                 """
                 st.markdown(message, unsafe_allow_html=True)
