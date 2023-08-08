@@ -116,7 +116,7 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
     df = pd.read_pickle('tagged_data.pkl')
 
     selected_columns = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
-                        'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK']
+                        'SUMMER_HOTTEST_TEMP', 'PROFESSION', 'TOT_EMP', 'H_MEAN', 'A_MEAN', 'TAGS','EXPANDED_TAGS',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK','DIFFERENT_STATE_MOVE_IN']
                     
     filtered_df = df[selected_columns]
       
@@ -146,8 +146,8 @@ def final_recommendations(user_profession, coldest_temp, hottest_temp, choice):
                      .groupby('CITY').head(1) \
                      .sort_index()
 
-    filtered_df = filtered_df.sort_values(by=['TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
-                                          ascending=[False, False, True, False, False])
+    filtered_df = filtered_df.sort_values(by=['DIFFERENT_STATE_MOVE_IN','TOT_EMP', 'A_MEAN','COST_OF_LIVING_INDEX', choice, 'SAFETY_INDEX'],
+                                          ascending=[True, False, False, True, False, False])
                                           
     max_top_cities = 2
     grouped_df = filtered_df.groupby('STATE_x').head(max_top_cities)
@@ -166,12 +166,12 @@ def final_recommendations_2(choice):
     df_2 = pd.read_pickle('tagged_data.pkl')
 
     selected_columns_2 = ['SAFETY_INDEX', 'COST_OF_LIVING_INDEX', 'WINTER_COLDEST_TEMP',
-                    'SUMMER_HOTTEST_TEMP',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK']
+                    'SUMMER_HOTTEST_TEMP',choice,'STATE_x','BEST_SUBURBS','IMAGE_LINK','DIFFERENT_STATE_MOVE_IN']
                     
     filtered_df_2 = df_2[selected_columns_2]
     
     filtered_df_2 = filtered_df_2.drop_duplicates()
-    filtered_df_2 = filtered_df_2.sort_values(by = [choice, 'COST_OF_LIVING_INDEX', 'SAFETY_INDEX'], ascending = [False, True, False])
+    filtered_df_2 = filtered_df_2.sort_values(by = ['DIFFERENT_STATE_MOVE_IN',choice, 'COST_OF_LIVING_INDEX', 'SAFETY_INDEX'], ascending = [True, False, True, False])
     
     return filtered_df_2
 
